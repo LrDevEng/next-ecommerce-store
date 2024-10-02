@@ -24,7 +24,10 @@ export default function AddToCartForm({ productId }) {
       </div>
       <button
         className={styles.addButton}
-        formAction={() => createOrUpdateCookie(productId, quantity)}
+        formAction={async () => {
+          await createOrUpdateCookie(productId, quantity);
+          setQuantity(1);
+        }}
       >
         Add To Cart
       </button>
