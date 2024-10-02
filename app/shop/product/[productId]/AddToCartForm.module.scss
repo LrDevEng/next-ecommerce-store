@@ -1,0 +1,16 @@
+.form {
+  margin: 1rem;
+}
+
+.quantity {
+  display: flex;
+  flex-direction: row;
+
+  input {
+    margin-left: 1rem;
+  }
+}
+
+.addButton {
+  margin-top: 1rem;
+}
