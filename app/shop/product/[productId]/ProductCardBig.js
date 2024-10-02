@@ -1,5 +1,5 @@
 import AddToCartForm from './AddToCartForm';
-import styles from './ProductCardBig.module.scss';
+import styles from './ProductCardBig.module.css';
 
 export default function ProductCardBig({ product }) {
   return (

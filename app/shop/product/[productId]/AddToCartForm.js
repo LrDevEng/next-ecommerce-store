@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import styles from './AddToCartForm.module.scss';
+import createOrUpdateCookie from './actions';
+import styles from './AddToCartForm.module.css';
 
 export default function AddToCartForm({ productId }) {
   const [quantity, setQuantity] = useState(1);
@@ -16,11 +17,15 @@ export default function AddToCartForm({ productId }) {
             type="number"
             min={1}
             value={quantity}
-            onChange={(event) => setQuantity(event.currentTarget.value)}
+            required
+            onChange={(event) => setQuantity(Number(event.currentTarget.value))}
           />
         </label>
       </div>
-      <button className={styles.addButton} formAction={() => {}}>
+      <button
+        className={styles.addButton}
+        formAction={() => createOrUpdateCookie(productId, quantity)}
+      >
         Add To Cart
       </button>
     </form>

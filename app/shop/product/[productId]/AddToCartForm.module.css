@@ -5,10 +5,10 @@
 .quantity {
   display: flex;
   flex-direction: row;
+}
 
-  input {
-    margin-left: 1rem;
-  }
+.quantity input {
+  margin-left: 1rem;
 }
 
 .addButton {

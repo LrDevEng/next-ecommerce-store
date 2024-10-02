@@ -13,7 +13,8 @@
     "next": "15.0.0-canary.171",
     "react": "19.0.0-rc-2d16326d-20240930",
     "react-dom": "19.0.0-rc-2d16326d-20240930",
-    "sass": "^1.79.4"
+    "sass": "^1.79.4",
+    "secure-json-parse": "^2.7.0"
   },
   "devDependencies": {
     "@types/node": "^22.7.4",

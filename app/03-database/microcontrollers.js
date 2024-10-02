@@ -1,4 +1,4 @@
-export const mcs = [
+const mcs = [
   { id: 1, name: 'Arduino Nano', price: 500 },
   { id: 2, name: 'Arduino Uno', price: 1000 },
   { id: 3, name: 'Arduino Due', price: 1200 },

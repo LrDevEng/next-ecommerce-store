@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from './ProducCardSmall.module.scss';
+import styles from './ProducCardSmall.module.css';
 
 export default function ProductCardSmall({ product }) {
   return (

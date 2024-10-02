@@ -1,5 +1,5 @@
 import { getMcs } from '../03-database/microcontrollers';
-import styles from './page.module.scss';
+import styles from './page.module.css';
 import ProductCardSmall from './ProductCardSmall';
 
 export const metadata = {
