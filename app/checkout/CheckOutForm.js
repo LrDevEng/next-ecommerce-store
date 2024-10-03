@@ -14,9 +14,9 @@ export default function CheckOutForm() {
   const [city, setCity] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [country, setCountry] = useState('');
-  const [cardNumber, setCardNumber] = useState();
-  const [expirationDate, setExpirationDate] = useState();
-  const [securityCode, setSecurityCode] = useState();
+  const [cardNumber, setCardNumber] = useState('');
+  const [expirationDate, setExpirationDate] = useState('');
+  const [securityCode, setSecurityCode] = useState('');
 
   const router = useRouter();
 
