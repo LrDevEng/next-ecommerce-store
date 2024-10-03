@@ -21,6 +21,7 @@ export default function AddToCartForm({ productId }) {
             value={quantity}
             required
             onChange={(event) => setQuantity(Number(event.currentTarget.value))}
+            data-test-id="product-quantity"
           />
         </label>
       </div>
@@ -30,6 +31,7 @@ export default function AddToCartForm({ productId }) {
           await createOrUpdateCookie(productId, quantity);
           setQuantity(minQty);
         }}
+        data-test-id="product-add-to-cart"
       >
         Add To Cart
       </button>

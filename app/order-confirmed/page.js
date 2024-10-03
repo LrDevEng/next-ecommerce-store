@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Order Confirmed',
-  description: 'Thank you. Order confirmed.',
+  title: 'Thank you for your order',
+  description: 'Order confirmed.',
 };
 
 export default function OrderConfirmedPage() {

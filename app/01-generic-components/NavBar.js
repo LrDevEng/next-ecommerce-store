@@ -24,9 +24,13 @@ export default async function NavBar() {
     <nav className={styles.navBar}>
       <Link href="/">The Wireless Controller</Link>
       <Link href="/about">About</Link>
-      <Link href="/shop">Shop</Link>
-      <Link href="/cart">Cart</Link>
-      <div>{`Count: ${numItemsInCart}`}</div>
+      <Link href="/shop" data-test-id="products-link">
+        Shop
+      </Link>
+      <Link href="/cart" data-test-id="cart-link">
+        Cart
+      </Link>
+      <div data-test-id="cart-count">{`Count: ${numItemsInCart}`}</div>
     </nav>
   );
 }
