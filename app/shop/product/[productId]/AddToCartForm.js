@@ -7,6 +7,11 @@ import styles from './AddToCartForm.module.css';
 export default function AddToCartForm({ productId }) {
   const [quantity, setQuantity] = useState(1);
 
+  // useEffect(() => {
+  //   const allCookies = document.cookie;
+  //   console.log(allCookies);
+  // }, []);
+
   return (
     <form className={styles.form}>
       <div className={styles.quantity}>

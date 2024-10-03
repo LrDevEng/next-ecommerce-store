@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { cartCookieName, getCookieValue } from '../02-util/cookies';
 import { getMc } from '../03-database/microcontrollers';
 import styles from './page.module.css';
+import RemoveButton from './RemoveButton';
 
 export const metadata = {
   title: 'Cart',
@@ -39,6 +40,9 @@ export default async function CartPage() {
                 <td>{productInfo.price}</td>
                 <td>{product.quantity}</td>
                 <td>{productInfo.price * product.quantity}</td>
+                <td>
+                  <RemoveButton productId={product.id} />
+                </td>
               </tr>
             );
           })}
