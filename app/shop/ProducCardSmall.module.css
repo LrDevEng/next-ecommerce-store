@@ -1,0 +1,11 @@
+.cardSmall {
+  display: flex;
+
+  .name {
+    margin: 1rem;
+  }
+
+  .id {
+    margin: 1rem;
+  }
+}

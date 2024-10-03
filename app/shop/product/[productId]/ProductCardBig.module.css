@@ -1,0 +1,12 @@
+.cardBig {
+  display: flex;
+  flex-direction: column;
+}
+
+.lineItem {
+  margin: 1rem;
+}
+
+.name {
+  margin: 1rem;
+}

@@ -1,0 +1,9 @@
+.page td,
+.page th {
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.total {
+  margin: 1rem;
+}

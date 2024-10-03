@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import CheckOutForm from './CheckOutForm';
+import styles from './page.module.css';
 
 export const metadata = {
   title: 'Check Out',
@@ -7,9 +8,11 @@ export const metadata = {
 
 export default function CheckoutPage() {
   return (
-    <div>
-      Confirm
-      <Link href="order-confirmed">Confirm Order</Link>
+    <div className={styles.page}>
+      <div>
+        Check Out
+        <CheckOutForm />
+      </div>
     </div>
   );
 }
