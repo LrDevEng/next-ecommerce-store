@@ -1,10 +1,7 @@
 'use server';
 
-import {
-  cartCookieName,
-  getCookieValue,
-  setCookie,
-} from '../02-util/cookies.js';
+import { cartCookieName } from '../02-util/constants.js';
+import { getCookieValue, setCookie } from '../02-util/cookies.js';
 
 export default async function removeProductFromCookie(productId) {
   // Get product information saved in cart cookie or set to base datatype in case cookie does not exist

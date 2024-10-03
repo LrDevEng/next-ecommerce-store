@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { cartCookieName, getCookieValue } from '../02-util/cookies';
+import { cartCookieName } from '../02-util/constants';
+import { getCookieValue } from '../02-util/cookies';
 import styles from './styles/NavBar.module.css';
 
 export default async function NavBar() {

@@ -1,0 +1,9 @@
+.form td {
+  min-width: 150px;
+  padding: 0.5rem;
+}
+
+.form fieldset {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

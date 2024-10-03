@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { cartCookieName, getCookieValue } from '../02-util/cookies';
+import { cartCookieName } from '../02-util/constants';
+import { getCookieValue } from '../02-util/cookies';
 import { getMc } from '../03-database/microcontrollers';
 import styles from './page.module.css';
 import RemoveButton from './RemoveButton';
@@ -19,7 +20,7 @@ export default async function CartPage() {
   }
 
   return (
-    <div className={styles.cart}>
+    <div className={styles.page}>
       <table>
         <thead>
           <tr>

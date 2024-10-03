@@ -1,8 +1,7 @@
+'use server';
+
 import { cookies } from 'next/headers';
 import { parseJson } from './parsers';
-
-// Cookie names
-export const cartCookieName = 'cart';
 
 // Function to get cookie value
 export async function getCookieValue(name) {
@@ -19,4 +18,9 @@ export async function setCookie(name, value) {
     httpOnly: true,
     secure: true,
   });
+}
+
+// Function to delete cookie
+export async function deleteCookie(name) {
+  (await cookies()).delete(name);
 }
