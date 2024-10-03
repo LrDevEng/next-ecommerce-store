@@ -51,8 +51,10 @@ export default async function CartPage() {
           })}
         </tbody>
       </table>
-      <div>{`Total: ${total}`}</div>
-      <Link href="/checkout">Check Out</Link>
+      <div className={styles.total}>{`Total: ${total}`}</div>
+      <Link className={styles.checkOut} href="/checkout">
+        Check Out
+      </Link>
     </div>
   );
 }
