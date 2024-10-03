@@ -11,6 +11,7 @@ export const metadata = {
 
 export default async function CartPage() {
   let products = await getCookieValue(cartCookieName);
+  let total = 0;
 
   // Check datatype of products (cookie value)
   if (!Array.isArray(products)) {
@@ -32,6 +33,8 @@ export default async function CartPage() {
         <tbody>
           {products.map((product) => {
             const productInfo = getMc(product.id);
+            const subtotal = productInfo.price * product.quantity;
+            total += subtotal;
 
             return (
               <tr key={`product-${product.id}`}>
@@ -39,7 +42,7 @@ export default async function CartPage() {
                 <td>{productInfo.name}</td>
                 <td>{productInfo.price}</td>
                 <td>{product.quantity}</td>
-                <td>{productInfo.price * product.quantity}</td>
+                <td>{subtotal}</td>
                 <td>
                   <RemoveButton productId={product.id} />
                 </td>
@@ -48,6 +51,7 @@ export default async function CartPage() {
           })}
         </tbody>
       </table>
+      <div>{`Total: ${total}`}</div>
       <Link href="/checkout">Check Out</Link>
     </div>
   );

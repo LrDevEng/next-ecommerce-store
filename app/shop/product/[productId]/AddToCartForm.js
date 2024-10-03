@@ -4,13 +4,10 @@ import { useState } from 'react';
 import createOrUpdateCookie from './actions';
 import styles from './AddToCartForm.module.css';
 
-export default function AddToCartForm({ productId }) {
-  const [quantity, setQuantity] = useState(1);
+const minQty = 1;
 
-  // useEffect(() => {
-  //   const allCookies = document.cookie;
-  //   console.log(allCookies);
-  // }, []);
+export default function AddToCartForm({ productId }) {
+  const [quantity, setQuantity] = useState(minQty);
 
   return (
     <form className={styles.form}>
@@ -31,7 +28,7 @@ export default function AddToCartForm({ productId }) {
         className={styles.addButton}
         formAction={async () => {
           await createOrUpdateCookie(productId, quantity);
-          setQuantity(1);
+          setQuantity(minQty);
         }}
       >
         Add To Cart
