@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { cartCookieName } from '../02-util/constants';
 import { getCookieValue } from '../02-util/cookies';
 import { getMc } from '../03-database/microcontrollers';

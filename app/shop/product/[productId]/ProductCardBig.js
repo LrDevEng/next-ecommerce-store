@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import AddToCartForm from './AddToCartForm';
 import styles from './ProductCardBig.module.css';
@@ -8,6 +9,14 @@ export default function ProductCardBig({ product }) {
       <Link href="/shop">⇦ Back</Link>
       <h1 className={styles.name}>{product.name}</h1>
       <h3 className={styles.lineItem}>Product Details:</h3>
+      <Image
+        src="/product.webp"
+        alt={`Image of ${product.name}`}
+        width={300}
+        height={200}
+        style={{ backgroundColor: 'gray' }}
+        data-test-id="product-image"
+      />
       <div className={styles.lineItem}>{`Id: ${product.id}`}</div>
       <div
         className={styles.lineItem}
