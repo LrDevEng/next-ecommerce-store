@@ -1,6 +1,6 @@
+import { getMcInsecure } from '../../database/microcontrollers';
 import { cartCookieName } from '../02-util/constants';
 import { getCookieValue } from '../02-util/cookies';
-import { getMc } from '../03-database/microcontrollers';
 import CheckOutButton from './CheckOutButton';
 import styles from './page.module.css';
 import RemoveButton from './RemoveButton';
@@ -12,12 +12,27 @@ export const metadata = {
 
 export default async function CartPage() {
   let products = await getCookieValue(cartCookieName);
-  let total = 0;
+  // let total = 0;
 
   // Check datatype of products (cookie value)
   if (!Array.isArray(products)) {
     products = [];
   }
+
+  // Calculate cart total
+
+  // Reduce
+  const total = await products.reduce(async (total, product) => {
+    const productInfo = await getMcInsecure(product.id);
+    return (await total) + productInfo.price * product.quantity;
+  }, 0);
+
+  // Alternative: Standard loop
+  // let total = 0;
+  // for (let i = 0; i < products.length; i++) {
+  //   const productInfo = await getMcInsecure(products[i].id);
+  //   total += productInfo.price * products[i].quantity;
+  // }
 
   return (
     <div className={styles.page}>
@@ -32,10 +47,9 @@ export default async function CartPage() {
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => {
-            const productInfo = getMc(product.id);
+          {products.map(async (product) => {
+            const productInfo = await getMcInsecure(product.id);
             const subtotal = productInfo.price * product.quantity;
-            total += subtotal;
 
             return (
               <tr
@@ -57,10 +71,9 @@ export default async function CartPage() {
           })}
         </tbody>
       </table>
-      <div
-        className={styles.total}
-        data-test-id="cart-total"
-      >{`Total: ${total}`}</div>
+      <div className={styles.total} data-test-id="cart-total">
+        {`Total: ${total}`}
+      </div>
       <CheckOutButton />
     </div>
   );

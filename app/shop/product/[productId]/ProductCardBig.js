@@ -10,7 +10,7 @@ export default function ProductCardBig({ product }) {
       <h1 className={styles.name}>{product.name}</h1>
       <h3 className={styles.lineItem}>Product Details:</h3>
       <Image
-        src="/product.webp"
+        src={`/images/${product.name.toLowerCase().replaceAll(' ', '-')}.jpg`}
         alt={`Image of ${product.name}`}
         width={300}
         height={200}

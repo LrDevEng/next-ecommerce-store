@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getMc } from '../../../03-database/microcontrollers';
+import { getMcInsecure } from '../../../../database/microcontrollers';
 import ProductCardBig from './ProductCardBig';
 
 export async function generateMetadata(props) {
@@ -12,7 +12,7 @@ export async function generateMetadata(props) {
 
 export default async function ProductPage(props) {
   const productId = (await props.params).productId;
-  const product = getMc(Number(productId));
+  const product = await getMcInsecure(Number(productId));
 
   if (!product) return notFound();
 

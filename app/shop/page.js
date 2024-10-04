@@ -1,4 +1,4 @@
-import { getMcs } from '../03-database/microcontrollers';
+import { getMcsInsecure } from '../../database/microcontrollers';
 import styles from './page.module.css';
 import ProductCardSmall from './ProductCardSmall';
 
@@ -7,8 +7,8 @@ export const metadata = {
   description: 'Buy your favorite mcirocontroller.',
 };
 
-export default function ShopPage() {
-  const mcs = getMcs();
+export default async function ShopPage() {
+  const mcs = await getMcsInsecure();
 
   return (
     <div className={styles.page}>
