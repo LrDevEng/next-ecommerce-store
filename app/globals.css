@@ -22,7 +22,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
 }
 
 * {
@@ -34,51 +33,53 @@ body {
 /* Start of holy grail grit layout */
 
 .grit-holy-grail {
+  min-height: 100vh;
   display: grid;
-  grid-template-columns: auto 1fr auto / auto 1fr auto;
+  grid-template-areas:
+    'header header header'
+    'sidebar-left main sidebar-right'
+    'footer footer footer';
+  grid-template-columns: 20% 1fr 20%;
+  grid-template-rows: auto 1fr auto;
 }
 
 header {
-  height: fit-content;
-  width: 100%;
-  margin: 2rem;
-  grid-column: 1 / 4;
+  grid-area: header;
+  padding: 2rem;
 }
 
 .sidebar-left {
-  grid-column: 1 / 2;
-  background-color: red;
+  grid-area: sidebar-left;
 }
 
 main {
-  grid-column: 2 / 3;
-  background-color: green;
+  grid-area: main;
 }
 
 .sidebar-right {
-  grid-column: 3 / 4;
-  background-color: red;
+  grid-area: sidebar-right;
 }
 
 footer {
-  height: fit-content;
-  width: 100%;
+  grid-area: footer;
   text-align: center;
-  margin: 2rem;
-  grid-column: 1 / 4;
+  padding: 1rem;
 }
 
 @media (max-width: 760px) {
   .grit-holy-grail {
-    grid: auto auto 1fr auto auto / 1fr;
+    grid-template-areas:
+      'header'
+      'sidebar-left'
+      'main'
+      'footer';
 
-    header,
-    .sidebar-left,
-    main,
-    .sidebar-right,
-    footer {
-      grid-column: 1 / 2;
-    }
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .sidebar-right {
+    display: none;
   }
 }
 
