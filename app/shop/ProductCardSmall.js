@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from './ProducCardSmall.module.css';
+import styles from './ProductCardSmall.module.css';
 
 export default function ProductCardSmall({ product }) {
   return (

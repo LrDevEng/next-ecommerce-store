@@ -1,11 +1,11 @@
 :root {
   --foreground: #171717;
 
-  --color-orange: #ff8343;
-  --color-creme: #fbf8ef;
+  --color-orange: #ff5500;
+  --color-creme: #e0e0e0;
   --color-turquoise: #007d9b;
-  --color-blue: #4158a6;
-  --color-gray: #6b6a6a;
+  --color-blue: #091c5b;
+  --color-gray: #a1a1a1;
   --width-product-card-small: 15.625rem;
 }
 
@@ -36,7 +36,6 @@ a {
 }
 
 /* Start of holy grail grit layout with sticky header*/
-
 .grit-holy-grail {
   min-height: 100vh;
   display: grid;
@@ -54,9 +53,9 @@ header {
   top: 0;
   z-index: 100;
   padding: 2rem;
-  background-color: var(--color-gray);
-  color: #ff8343;
-  box-shadow: 0 0 1rem var(--color-gray);
+  background-color: var(--color-blue);
+  color: var(--color-orange);
+  box-shadow: 0 0 1rem var(--color-blue);
 }
 
 .sidebar-left {
@@ -95,5 +94,8 @@ footer {
     display: none;
   }
 }
-
 /* End of holy grail grit layout with sticky header*/
+
+button {
+  font-family: 'Courier New', Courier, monospace;
+}

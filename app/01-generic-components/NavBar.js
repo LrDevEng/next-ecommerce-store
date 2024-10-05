@@ -30,7 +30,7 @@ export default async function NavBar() {
       <Link href="/cart" data-test-id="cart-link">
         Cart
       </Link>
-      <div data-test-id="cart-count">{`Count: ${numItemsInCart}`}</div>
+      <div data-test-id="cart-count">{`int count = ${numItemsInCart};`}</div>
     </nav>
   );
 }
