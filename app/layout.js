@@ -26,11 +26,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <header>
-          <NavBar />
-        </header>
-        <main>{children}</main>
-        <footer>Footer</footer>
+        <div className="grit-holy-grail">
+          <header>
+            <NavBar />
+          </header>
+          <aside className="sidebar-left">Left</aside>
+          <main>{children}</main>
+          <aside className="sidebar-right">Right</aside>
+          <footer>Footer</footer>
+        </div>
       </body>
     </html>
   );
