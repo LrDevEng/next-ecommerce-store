@@ -1,16 +1,13 @@
 :root {
-  --background: #ffffff;
   --foreground: #171717;
 
+  --color-orange: #ff8343;
+  --color-creme: #fbf8ef;
+  --color-turquoise: #007d9b;
+  --color-blue: #4158a6;
+  --color-gray: #6b6a6a;
   --width-product-card-small: 15.625rem;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
 
 html,
 body {
@@ -18,17 +15,24 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--color-blue);
   font-family: 'Courier New', Courier, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-creme);
+  /* background-image: url('../public/images/background-blue-circuit-lines.jpg'); */
+  background-size: 1200px;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 /* Start of holy grail grit layout with sticky header*/
@@ -48,7 +52,11 @@ header {
   grid-area: header;
   position: sticky;
   top: 0;
+  z-index: 100;
   padding: 2rem;
+  background-color: var(--color-gray);
+  color: #ff8343;
+  box-shadow: 0 0 1rem var(--color-gray);
 }
 
 .sidebar-left {
@@ -56,6 +64,7 @@ header {
 }
 
 main {
+  font-weight: 600;
   grid-area: main;
 }
 
@@ -64,6 +73,7 @@ main {
 }
 
 footer {
+  background-color: var(--color-creme);
   grid-area: footer;
   text-align: center;
   padding: 1rem;
@@ -87,14 +97,3 @@ footer {
 }
 
 /* End of holy grail grit layout with sticky header*/
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-} */
