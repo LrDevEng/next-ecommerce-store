@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getMcInsecure } from '../../../../database/microcontrollers';
+import styles from './page.module.css';
 import ProductCardBig from './ProductCardBig';
 
 export async function generateMetadata(props) {
@@ -17,7 +18,7 @@ export default async function ProductPage(props) {
   if (!product) return notFound();
 
   return (
-    <div>
+    <div className={styles.page}>
       <ProductCardBig product={product} />
     </div>
   );

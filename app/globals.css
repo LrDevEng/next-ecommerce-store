@@ -6,7 +6,15 @@
   --color-turquoise: #007d9b;
   --color-blue: #091c5b;
   --color-gray: #a1a1a1;
+
+  --color-retro-lightblue: #74fdff;
+  --color-retro-blue: #035ee8;
+  --color-retro-pink: #f6019d;
+  --color-retro-magenta: #d40078;
+  --color-retro-purple: #9700cc;
+
   --width-product-card-small: 15.625rem;
+  --margin-page-top: 3rem;
 }
 
 html,
@@ -53,8 +61,8 @@ header {
   top: 0;
   z-index: 100;
   padding: 2rem;
-  background-color: var(--color-blue);
-  color: var(--color-orange);
+  background-color: var(--color-creme);
+  color: var(--color-blue);
   box-shadow: 0 0 1rem var(--color-blue);
 }
 
@@ -63,8 +71,10 @@ header {
 }
 
 main {
-  font-weight: 600;
   grid-area: main;
+  font-weight: 600;
+
+  margin: var(--margin-page-top) 1rem;
 }
 
 .sidebar-right {

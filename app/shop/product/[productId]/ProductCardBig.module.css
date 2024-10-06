@@ -7,23 +7,60 @@
   margin: 1rem;
 }
 
+.table {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+}
+
+.table td {
+  padding: 0.5rem;
+}
+
 .name {
   margin: 1rem;
 }
 
-/*
-.typewriter h1 {
-  overflow: hidden;
-  border-right: .15em solid orange;
-  white-space: nowrap;
+.eyecatcher {
+  margin: auto;
+  width: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid var(--color-blue);
+}
+
+.imgContainer {
+  flex-grow: 1;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  margin: auto;
+}
+
+.img {
+  background-color: gray;
+}
+
+.addToCart {
+  width: fit-content;
+  text-align: left;
   margin: 0 auto;
-  letter-spacing: .15em;
-  animation:
-    typing 3.5s steps(40, end),
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 1rem auto;
+  letter-spacing: 0.15em;
+  animation: typing 3.5s steps(40, end);
 }
 
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
-*/
