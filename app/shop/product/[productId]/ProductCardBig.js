@@ -4,9 +4,14 @@ import AddToCartForm from './AddToCartForm';
 import styles from './ProductCardBig.module.css';
 
 export default function ProductCardBig({ product }) {
+  const descriptionParagraphs = product.description.split('\\n');
+
   return (
     <div className={styles.cardBig}>
-      <Link href="/shop">⇦ return</Link>
+      <Link className={styles.return} href="/shop">
+        <div className={styles.spin}>⇦</div>
+        <div>return</div>
+      </Link>
       <h1 className={styles.name}>{product.name}</h1>
       <h3 className={styles.typewriter}>Product Details:</h3>
       <div className={styles.eyecatcher}>
@@ -36,6 +41,24 @@ export default function ProductCardBig({ product }) {
           <AddToCartForm productId={product.id} />
         </div>
       </div>
+
+      <article className={styles.article}>
+        <hr />
+        <h3>Description:</h3>
+        {descriptionParagraphs.map((paragraph) => {
+          return (
+            <p key={`paragraph-${paragraph.slice(1, 20)}`}>
+              <br />
+              {paragraph}
+            </p>
+          );
+        })}
+      </article>
+
+      <article className={styles.article}>
+        <hr />
+        <h3>Specification:</h3>
+      </article>
     </div>
   );
 }
