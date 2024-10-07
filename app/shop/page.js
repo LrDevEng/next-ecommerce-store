@@ -8,16 +8,16 @@ export const metadata = {
 };
 
 export default async function ShopPage() {
-  const mcs = await getProductsInsecure();
+  const products = await getProductsInsecure();
 
   return (
     <div className={styles.page}>
-      <h1>Available Development Boards</h1>
+      <h1>Available Parts</h1>
       <div className={styles.productPreview}>
-        {mcs.map((mc) => {
+        {products.map((product) => {
           return (
-            <div key={`mc-${mc.id}`}>
-              <ProductCardSmall product={mc} />
+            <div key={`mc-${product.id}`}>
+              <ProductCardSmall product={product} />
             </div>
           );
         })}
