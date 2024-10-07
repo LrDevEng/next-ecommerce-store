@@ -4,7 +4,7 @@ import postgres, { Sql } from 'postgres';
 
 config();
 
-declare module globalThis {
+declare namespace globalThis {
   let postgresSqlClient: Sql;
 }
 

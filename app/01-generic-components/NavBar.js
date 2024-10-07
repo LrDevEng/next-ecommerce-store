@@ -22,7 +22,7 @@ export default async function NavBar() {
 
   return (
     <nav className={styles.navBar}>
-      <Link href="/">The Wireless Controller</Link>
+      <Link href="/">Custom ARCADE</Link>
       <Link href="/about">About</Link>
       <Link href="/shop" data-test-id="products-link">
         Shop
