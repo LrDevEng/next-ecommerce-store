@@ -1,4 +1,4 @@
-import { getMcsInsecure } from '../../database/microcontrollers';
+import { getProductsInsecure } from '../../database/products';
 import styles from './page.module.css';
 import ProductCardSmall from './ProductCardSmall';
 
@@ -8,7 +8,7 @@ export const metadata = {
 };
 
 export default async function ShopPage() {
-  const mcs = await getMcsInsecure();
+  const mcs = await getProductsInsecure();
 
   return (
     <div className={styles.page}>

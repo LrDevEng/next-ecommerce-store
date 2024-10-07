@@ -1,4 +1,4 @@
-import { getMcInsecure } from '../../database/microcontrollers';
+import { getProductInsecure } from '../../database/products';
 import { cartCookieName } from '../02-util/constants';
 import { getCookieValue } from '../02-util/cookies';
 import CheckOutButton from './CheckOutButton';
@@ -20,11 +20,16 @@ export default async function CartPage() {
 
   // Calculate cart total
 
-  // Reduce
-  const total = await products.reduce(async (sum, product) => {
-    const productInfo = await getMcInsecure(product.id);
-    return (await sum) + productInfo.price * product.quantity;
-  }, 0);
+  let total = 0;
+  for (const product of products) {
+    total += (await getProductInsecure(product.id)).price * product.quantity;
+  }
+
+  // Alternative: Reduce
+  // const total = await products.reduce(async (sum, product) => {
+  //   const productInfo = await getMcInsecure(product.id);
+  //   return (await sum) + productInfo.price * product.quantity;
+  // }, 0);
 
   // Alternative: Standard loop
   // let total = 0;
@@ -47,7 +52,7 @@ export default async function CartPage() {
         </thead>
         <tbody>
           {products.map(async (product) => {
-            const productInfo = await getMcInsecure(product.id);
+            const productInfo = await getProductInsecure(product.id);
             const subtotal = productInfo.price * product.quantity;
 
             return (
