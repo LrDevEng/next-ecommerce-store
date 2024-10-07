@@ -7,3 +7,8 @@
 .total {
   margin: 1rem;
 }
+
+.productImage {
+  width: 60px;
+  height: auto;
+}

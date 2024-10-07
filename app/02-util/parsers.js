@@ -16,3 +16,9 @@ export async function getFullFileName(fileName, dir) {
   const files = await fs.readdir(dir);
   return files.find((file) => file.startsWith(fileName));
 }
+
+// Cent to euro
+export function centsToEuros(cents) {
+  cents = cents.toString();
+  return `${cents.slice(0, -2)},${cents.slice(-2)}`;
+}

@@ -1,6 +1,8 @@
+import Image from 'next/image';
 import { getProductInsecure } from '../../database/products';
 import { cartCookieName } from '../02-util/constants';
 import { getCookieValue } from '../02-util/cookies';
+import { centsToEuros, getFullFileName } from '../02-util/parsers';
 import CheckOutButton from './CheckOutButton';
 import styles from './page.module.css';
 import RemoveButton from './RemoveButton';
@@ -43,7 +45,8 @@ export default async function CartPage() {
       <table>
         <thead>
           <tr>
-            <th>Id</th>
+            <th />
+            <th />
             <th>Name</th>
             <th>Price</th>
             <th>Quantity</th>
@@ -54,6 +57,10 @@ export default async function CartPage() {
           {products.map(async (product) => {
             const productInfo = await getProductInsecure(product.id);
             const subtotal = productInfo.price * product.quantity;
+            const productImageFullName = await getFullFileName(
+              productInfo.name.toLowerCase().replaceAll(' ', '-'),
+              process.cwd() + '\\public\\images',
+            );
 
             return (
               <tr
@@ -61,12 +68,22 @@ export default async function CartPage() {
                 data-test-id={`cart-product-${product.id}`}
               >
                 <td>{product.id}</td>
+                <td>
+                  <Image
+                    className={styles.productImage}
+                    src={`/images/${productImageFullName}`}
+                    alt={`Image of ${product.name}`}
+                    width={600}
+                    height={400}
+                    style={{ backgroundColor: 'gray' }}
+                  />
+                </td>
                 <td>{productInfo.name}</td>
-                <td>{productInfo.price}</td>
+                <td className="euro">{centsToEuros(productInfo.price)}</td>
                 <td data-test-id={`cart-product-quantity-${product.id}`}>
                   {product.quantity}
                 </td>
-                <td>{subtotal}</td>
+                <td className="euro">{centsToEuros(subtotal)}</td>
                 <td>
                   <RemoveButton productId={product.id} />
                 </td>
@@ -75,8 +92,11 @@ export default async function CartPage() {
           })}
         </tbody>
       </table>
-      <div className={styles.total} data-test-id="cart-total">
-        {`Total: ${total}`}
+      <div className={styles.total}>
+        <span>Total: </span>
+        <span className="euro" data-test-id="cart-total">
+          {centsToEuros(total)}
+        </span>
       </div>
       <CheckOutButton />
     </div>

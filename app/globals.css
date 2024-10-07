@@ -109,3 +109,11 @@ footer {
 button {
   font-family: 'Courier New', Courier, monospace;
 }
+
+.euro {
+  text-wrap: nowrap;
+
+  &::before {
+    content: '€ ';
+  }
+}

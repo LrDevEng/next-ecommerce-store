@@ -21,8 +21,8 @@ export default async function ProductCardSmall({ product }) {
         className={styles.productImage}
         src={`/images/${productImageFullName}`}
         alt={`Image of ${product.name}`}
-        width={300}
-        height={200}
+        width={600}
+        height={400}
         style={{ backgroundColor: 'gray' }}
         data-test-id="product-image"
       />

@@ -40,6 +40,8 @@
 
 .img {
   background-color: gray;
+  width: 300px;
+  height: auto;
 }
 
 .addToCart {
