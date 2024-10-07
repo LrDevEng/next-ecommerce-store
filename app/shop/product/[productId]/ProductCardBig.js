@@ -1,9 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { getFullFileName } from '../../../02-util/parsers';
 import AddToCartForm from './AddToCartForm';
 import styles from './ProductCardBig.module.css';
 
-export default function ProductCardBig({ product }) {
+export default async function ProductCardBig({ product }) {
+  const productImageFullName = await getFullFileName(
+    product.name.toLowerCase().replaceAll(' ', '-'),
+    process.cwd() + '\\public\\images',
+  );
+
   const descriptionParagraphs = product.description.split('\\n');
 
   return (
@@ -17,7 +23,7 @@ export default function ProductCardBig({ product }) {
       <div className={styles.eyecatcher}>
         <div className={styles.imgContainer}>
           <Image
-            src={`/images/${product.name.toLowerCase().replaceAll(' ', '-')}.jpg`}
+            src={`/images/${productImageFullName}`}
             alt={`Image of ${product.name}`}
             width={300}
             height={200}

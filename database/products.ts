@@ -1,7 +1,7 @@
 import { cache } from 'react';
 import { sql } from './connect';
 
-type Microcontroller = {
+type Product = {
   id: number;
   name: string;
   price: number;
@@ -9,22 +9,22 @@ type Microcontroller = {
   description: string | null;
 };
 
-export const getMcsInsecure = cache(async () => {
-  const mcs = await sql<Microcontroller[]>`
+export const getProductsInsecure = cache(async () => {
+  const mcs = await sql<Product[]>`
     SELECT
       *
     FROM
-      microcontrollers
+      products
   `;
   return mcs;
 });
 
-export const getMcInsecure = cache(async (id: number) => {
-  const [mc] = await sql<Microcontroller[]>`
+export const getProductInsecure = cache(async (id: number) => {
+  const [mc] = await sql<Product[]>`
     SELECT
       *
     FROM
-      microcontrollers
+      products
     WHERE
       id = ${id}
   `;
