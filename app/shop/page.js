@@ -12,14 +12,16 @@ export default async function ShopPage() {
 
   return (
     <div className={styles.page}>
-      <h1>Available Microcontrollers</h1>
-      {mcs.map((mc) => {
-        return (
-          <div key={`mc-${mc.id}`}>
-            <ProductCardSmall product={mc} />
-          </div>
-        );
-      })}
+      <h1>Available Development Boards</h1>
+      <div className={styles.productPreview}>
+        {mcs.map((mc) => {
+          return (
+            <div key={`mc-${mc.id}`}>
+              <ProductCardSmall product={mc} />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

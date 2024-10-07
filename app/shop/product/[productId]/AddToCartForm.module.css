@@ -9,6 +9,8 @@
 
 .quantity input {
   margin-left: 1rem;
+  max-width: 3rem;
+  text-align: center;
 }
 
 .addButton {

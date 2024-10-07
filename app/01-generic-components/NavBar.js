@@ -22,7 +22,7 @@ export default async function NavBar() {
 
   return (
     <nav className={styles.navBar}>
-      <Link href="/">The Wireless Controller</Link>
+      <Link href="/">Custom ARCADE</Link>
       <Link href="/about">About</Link>
       <Link href="/shop" data-test-id="products-link">
         Shop
@@ -30,7 +30,7 @@ export default async function NavBar() {
       <Link href="/cart" data-test-id="cart-link">
         Cart
       </Link>
-      <div data-test-id="cart-count">{`Count: ${numItemsInCart}`}</div>
+      <div data-test-id="cart-count">{`int count = ${numItemsInCart};`}</div>
     </nav>
   );
 }

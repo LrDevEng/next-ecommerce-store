@@ -33,7 +33,7 @@ export default function AddToCartForm({ productId }) {
         }}
         data-test-id="product-add-to-cart"
       >
-        Add To Cart
+        #include "in_cart"
       </button>
     </form>
   );

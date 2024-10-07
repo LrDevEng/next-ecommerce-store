@@ -12,7 +12,6 @@ export const metadata = {
 
 export default async function CartPage() {
   let products = await getCookieValue(cartCookieName);
-  // let total = 0;
 
   // Check datatype of products (cookie value)
   if (!Array.isArray(products)) {
@@ -22,17 +21,17 @@ export default async function CartPage() {
   // Calculate cart total
 
   // Reduce
-  // const total = await products.reduce(async (total, product) => {
-  //   const productInfo = await getMcInsecure(product.id);
-  //   return (await total) + productInfo.price * product.quantity;
-  // }, 0);
+  const total = await products.reduce(async (sum, product) => {
+    const productInfo = await getMcInsecure(product.id);
+    return (await sum) + productInfo.price * product.quantity;
+  }, 0);
 
   // Alternative: Standard loop
-  let total = 0;
-  for (let i = 0; i < products.length; i++) {
-    const productInfo = await getMcInsecure(products[i].id);
-    total += productInfo.price * products[i].quantity;
-  }
+  // let total = 0;
+  // for (let i = 0; i < products.length; i++) {
+  //   const productInfo = await getMcInsecure(products[i].id);
+  //   total += productInfo.price * products[i].quantity;
+  // }
 
   return (
     <div className={styles.page}>

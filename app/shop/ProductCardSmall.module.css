@@ -1,0 +1,30 @@
+.cardSmall {
+  position: relative;
+  margin-top: 1rem;
+  text-align: center;
+  background-color: white;
+  width: var(--width-product-card-small);
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  grid-gap: 0.5rem;
+  border: 2px solid var(--color-blue);
+  transition: 0.25s;
+
+  .name {
+    height: 3.25rem;
+    padding: 0.25rem;
+  }
+
+  .productImage {
+    margin: auto;
+    width: 100%;
+    max-width: 300px;
+    max-height: 200px;
+    height: auto;
+  }
+
+  &:hover {
+    box-shadow: 0 0 0.75rem var(--color-orange);
+  }
+}
