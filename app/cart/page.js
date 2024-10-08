@@ -3,6 +3,7 @@ import { getProductInsecure } from '../../database/products';
 import { cartCookieName } from '../02-util/constants';
 import { getCookieValue } from '../02-util/cookies';
 import { centsToEuros, getFullFileName } from '../02-util/parsers';
+import { calculateCartTotal } from '../02-util/productCalculations';
 import CheckOutButton from './CheckOutButton';
 import styles from './page.module.css';
 import RemoveButton from './RemoveButton';
@@ -13,32 +14,22 @@ export const metadata = {
 };
 
 export default async function CartPage() {
-  let products = await getCookieValue(cartCookieName);
+  // Get products from cookie
+  let productsCookie = await getCookieValue(cartCookieName);
 
   // Check datatype of products (cookie value)
-  if (!Array.isArray(products)) {
-    products = [];
+  if (!Array.isArray(productsCookie)) {
+    productsCookie = [];
+  }
+
+  // Get products from database that are saved in cookie
+  const productsDb = [];
+  for (const product of productsCookie) {
+    productsDb.push(await getProductInsecure(product.id));
   }
 
   // Calculate cart total
-
-  let total = 0;
-  for (const product of products) {
-    total += (await getProductInsecure(product.id)).price * product.quantity;
-  }
-
-  // Alternative: Reduce
-  // const total = await products.reduce(async (sum, product) => {
-  //   const productInfo = await getMcInsecure(product.id);
-  //   return (await sum) + productInfo.price * product.quantity;
-  // }, 0);
-
-  // Alternative: Standard loop
-  // let total = 0;
-  // for (let i = 0; i < products.length; i++) {
-  //   const productInfo = await getMcInsecure(products[i].id);
-  //   total += productInfo.price * products[i].quantity;
-  // }
+  const total = await calculateCartTotal(productsCookie, productsDb);
 
   return (
     <div className={styles.page}>
@@ -56,18 +47,18 @@ export default async function CartPage() {
           </tr>
         </thead>
         <tbody>
-          {products.map(async (product, index) => {
-            const productInfo = await getProductInsecure(product.id);
-            const subtotal = productInfo.price * product.quantity;
+          {productsCookie.map(async (productCookie, index) => {
+            const productDb = productsDb[index];
+            const subtotal = productDb.price * productCookie.quantity;
             const productImageFullName = await getFullFileName(
-              productInfo.name.toLowerCase().replaceAll(' ', '-'),
+              productDb.name.toLowerCase().replaceAll(' ', '-'),
               process.cwd() + '\\public\\images',
             );
 
             return (
               <tr
-                key={`product-${product.id}`}
-                data-test-id={`cart-product-${product.id}`}
+                key={`product-${productCookie.id}`}
+                data-test-id={`cart-product-${productCookie.id}`}
               >
                 <td>{index + 1}</td>
                 <td>
@@ -75,21 +66,21 @@ export default async function CartPage() {
                     <Image
                       className={styles.productImage}
                       src={`/images/${productImageFullName}`}
-                      alt={`Image of ${product.name}`}
+                      alt={`Image of ${productDb.name}`}
                       width={600}
                       height={400}
                       style={{ backgroundColor: 'gray' }}
                     />
                   </div>
                 </td>
-                <td>{productInfo.name}</td>
-                <td className="euro">{centsToEuros(productInfo.price)}</td>
-                <td data-test-id={`cart-product-quantity-${product.id}`}>
-                  {product.quantity}
+                <td>{productDb.name}</td>
+                <td className="euro">{centsToEuros(productDb.price)}</td>
+                <td data-test-id={`cart-product-quantity-${productCookie.id}`}>
+                  {productCookie.quantity}
                 </td>
                 <td className="euro">{centsToEuros(subtotal)}</td>
                 <td>
-                  <RemoveButton productId={product.id} />
+                  <RemoveButton productId={productCookie.id} />
                 </td>
               </tr>
             );
@@ -102,7 +93,10 @@ export default async function CartPage() {
           {centsToEuros(total)}
         </span>
       </div>
-      <CheckOutButton className={styles.checkOutButton} cartIsEmpty={products.length < 1} />
+      <CheckOutButton
+        className={styles.checkOutButton}
+        cartIsEmpty={productsCookie.length < 1}
+      />
     </div>
   );
 }

@@ -4,23 +4,24 @@ import { sql } from './connect';
 type Product = {
   id: number;
   name: string;
+  type: string;
   price: number;
   amount: number | null;
   description: string | null;
 };
 
 export const getProductsInsecure = cache(async () => {
-  const mcs = await sql<Product[]>`
+  const products = await sql<Product[]>`
     SELECT
       *
     FROM
       products
   `;
-  return mcs;
+  return products;
 });
 
 export const getProductInsecure = cache(async (id: number) => {
-  const [mc] = await sql<Product[]>`
+  const [product] = await sql<Product[]>`
     SELECT
       *
     FROM
@@ -28,7 +29,7 @@ export const getProductInsecure = cache(async (id: number) => {
     WHERE
       id = ${id}
   `;
-  return mc;
+  return product;
 });
 
 // Fake database
