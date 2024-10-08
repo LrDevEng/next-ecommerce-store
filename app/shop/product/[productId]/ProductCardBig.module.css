@@ -42,6 +42,7 @@
   background-color: gray;
   width: 300px;
   height: auto;
+  max-height: 100%;
 }
 
 .addToCart {
@@ -51,23 +52,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.typewriter {
-  overflow: hidden;
-  white-space: nowrap;
-  margin: 1rem auto;
-  letter-spacing: 0.15em;
-  animation: typing 3.5s steps(40, end);
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
 }
 
 .article {

@@ -17,7 +17,7 @@ export async function getFullFileName(fileName, dir) {
   return files.find((file) => file.startsWith(fileName));
 }
 
-// Cent to euro
+// Cents to euros
 export function centsToEuros(cents) {
   cents = cents.toString();
   return `${cents.slice(0, -2)},${cents.slice(-2)}`;

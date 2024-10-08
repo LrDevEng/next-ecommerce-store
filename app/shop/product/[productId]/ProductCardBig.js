@@ -19,7 +19,7 @@ export default async function ProductCardBig({ product }) {
         <div>return</div>
       </Link>
       <h1 className={styles.name}>{product.name}</h1>
-      <h3 className={styles.typewriter}>Product Details:</h3>
+      <h3 className="typewriter">Product Details:</h3>
       <div className={styles.eyecatcher}>
         <div className={styles.imgContainer}>
           <Image

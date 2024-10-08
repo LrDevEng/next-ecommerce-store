@@ -13,6 +13,19 @@
   --color-retro-magenta: #d40078;
   --color-retro-purple: #9700cc;
 
+  --color-arcade-pink: #fe5caf;
+  --color-arcade-pink-shade: #e54593;
+  --color-arcade-pink-dark: #752759;
+  --color-arcade-blue-light: #e5fffb;
+  --color-arcade-blue: #0cd4fc;
+  --color-arcade-blue-shade: #06aed4;
+  --color-arcade-blue-dark: #185d7c;
+  --color-arcade-blue-intense: #091c5b;
+  --color-arcade-yellow: #fce82e;
+  --color-arcade-yellow-shade: #f9b717;
+  --color-arcade-yellow-dark: #af7120;
+  --color-arcade-yellow-background: #fff0a3;
+
   --width-product-card-small: 15.625rem;
   --margin-page-top: 3rem;
 }
@@ -23,13 +36,19 @@ body {
 }
 
 body {
-  color: var(--color-blue);
+  color: var(--color-arcade-blue-intense);
   font-family: 'Courier New', Courier, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-creme);
-  /* background-image: url('../public/images/background-blue-circuit-lines.jpg'); */
+  background-color: var(--color-arcade-yellow-background);
   background-size: 1200px;
+}
+
+h1 {
+  font-family: var(--font-press-start-2p), 'Courier New', Courier, monospace;
+  font-size: x-large;
+  line-height: 1.5;
+  text-shadow: var(--color-arcade-pink) 2px 2px;
 }
 
 * {
@@ -61,31 +80,39 @@ header {
   top: 0;
   z-index: 100;
   padding: 2rem;
-  background-color: var(--color-creme);
-  color: var(--color-blue);
-  box-shadow: 0 0 1rem var(--color-blue);
+  background-color: var(--color-arcade-yellow-shade);
+  color: var(--color-arcade-blue-intense);
+  box-shadow: 0 0 1rem var(--color-arcade-pink-dark);
 }
 
 .sidebar-left {
   grid-area: sidebar-left;
+  background-image: url('../public/images/background.webp');
+  background-repeat: repeat-y;
+  background-position: left top;
+  background-size: 180px;
 }
 
 main {
   grid-area: main;
   font-weight: 600;
-
   margin: var(--margin-page-top) 1rem;
 }
 
 .sidebar-right {
   grid-area: sidebar-right;
+  background-image: url('../public/images/background.webp');
+  background-repeat: repeat-y;
+  background-position: right top;
+  background-size: 180px;
 }
 
 footer {
-  background-color: var(--color-creme);
   grid-area: footer;
   text-align: center;
   padding: 1rem;
+  background-color: var(--color-arcade-yellow-shade);
+  box-shadow: 0 0 1rem var(--color-arcade-pink-dark);
 }
 
 @media (max-width: 768px) {
@@ -108,6 +135,40 @@ footer {
 
 button {
   font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  color: var(--color-arcade-pink);
+  font-weight: 600;
+  border: 2px solid var(--color-arcade-pink);
+  background-color: var(--color-arcade-yellow-background);
+  padding: 0.2rem;
+
+  &:hover {
+    color: var(--color-arcade-pink-shade);
+    border: 2px solid var(--color-arcade-pink-shade);
+    background-color: var(--color-arcade-yellow);
+  }
+
+  &:active {
+    background-color: var(--color-arcade-pink-shade);
+    color: var(--color-arcade-blue);
+  }
+}
+
+input {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  color: var(--color-arcade-pink);
+  font-weight: 600;
+  border: 2px solid var(--color-arcade-pink);
+  background-color: var(--color-arcade-yellow-background);
+  padding: 0.2rem;
+  outline: none;
+
+  &:focus {
+    color: var(--color-arcade-pink-shade);
+    border: 2px solid var(--color-arcade-pink-shade);
+    background-color: var(--color-arcade-yellow);
+  }
 }
 
 .euro {
@@ -115,5 +176,22 @@ button {
 
   &::before {
     content: '€ ';
+  }
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 1rem auto;
+  letter-spacing: 0.15em;
+  animation: typing 3.5s steps(40, end);
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
   }
 }

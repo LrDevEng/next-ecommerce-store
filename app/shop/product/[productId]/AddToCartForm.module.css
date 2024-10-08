@@ -7,12 +7,20 @@
   flex-direction: row;
 }
 
+.quantity label {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .quantity input {
-  margin-left: 1rem;
-  max-width: 3rem;
+  max-width: 4rem;
   text-align: center;
 }
 
 .addButton {
+  width: 100%;
   margin-top: 1rem;
 }

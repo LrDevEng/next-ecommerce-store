@@ -42,19 +42,21 @@ export default async function CartPage() {
 
   return (
     <div className={styles.page}>
-      <table>
+      <h1>Cart</h1>
+
+      <table className={styles.table}>
         <thead>
           <tr>
+            <th>No.</th>
             <th />
-            <th />
-            <th>Name</th>
+            <th>Item</th>
             <th>Price</th>
-            <th>Quantity</th>
+            <th>Qty.</th>
             <th>Subtotal</th>
           </tr>
         </thead>
         <tbody>
-          {products.map(async (product) => {
+          {products.map(async (product, index) => {
             const productInfo = await getProductInsecure(product.id);
             const subtotal = productInfo.price * product.quantity;
             const productImageFullName = await getFullFileName(
@@ -67,16 +69,18 @@ export default async function CartPage() {
                 key={`product-${product.id}`}
                 data-test-id={`cart-product-${product.id}`}
               >
-                <td>{product.id}</td>
+                <td>{index + 1}</td>
                 <td>
-                  <Image
-                    className={styles.productImage}
-                    src={`/images/${productImageFullName}`}
-                    alt={`Image of ${product.name}`}
-                    width={600}
-                    height={400}
-                    style={{ backgroundColor: 'gray' }}
-                  />
+                  <div className={styles.imageContainer}>
+                    <Image
+                      className={styles.productImage}
+                      src={`/images/${productImageFullName}`}
+                      alt={`Image of ${product.name}`}
+                      width={600}
+                      height={400}
+                      style={{ backgroundColor: 'gray' }}
+                    />
+                  </div>
                 </td>
                 <td>{productInfo.name}</td>
                 <td className="euro">{centsToEuros(productInfo.price)}</td>
@@ -98,7 +102,7 @@ export default async function CartPage() {
           {centsToEuros(total)}
         </span>
       </div>
-      <CheckOutButton />
+      <CheckOutButton className={styles.checkOutButton} />
     </div>
   );
 }
