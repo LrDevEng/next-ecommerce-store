@@ -102,7 +102,7 @@ export default async function CartPage() {
           {centsToEuros(total)}
         </span>
       </div>
-      <CheckOutButton className={styles.checkOutButton} />
+      <CheckOutButton className={styles.checkOutButton} cartIsEmpty={products.length < 1} />
     </div>
   );
 }

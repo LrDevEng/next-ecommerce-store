@@ -19,6 +19,10 @@ export async function getFullFileName(fileName, dir) {
 
 // Cents to euros
 export function centsToEuros(cents) {
+  if (typeof cents !== 'number') {
+    throw new Error('Only pass numbers!');
+  }
   cents = cents.toString();
+  cents = cents.padStart(3, '0');
   return `${cents.slice(0, -2)},${cents.slice(-2)}`;
 }
