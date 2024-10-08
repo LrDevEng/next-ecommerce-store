@@ -8,7 +8,7 @@ export default function RemoveButton({ productId }) {
       onClick={() => removeProductFromCookie(productId)}
       data-test-id={`cart-product-remove-${productId}`}
     >
-      Remove
+      x
     </button>
   );
 }

@@ -25,6 +25,6 @@
   }
 
   &:hover {
-    box-shadow: 0 0 0.75rem var(--color-orange);
+    box-shadow: 0 0 0.75rem var(--color-arcade-pink);
   }
 }

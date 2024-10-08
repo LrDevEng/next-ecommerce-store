@@ -1,3 +1,9 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .page td,
 .page th {
   padding: 0.5rem;
@@ -6,4 +12,40 @@
 
 .total {
   margin: 1rem;
+}
+
+.productImage {
+  width: 60px;
+  height: auto;
+  margin: auto;
+}
+
+.imageContainer {
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkOutForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: red;
+}
+
+.table {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.checkOutButton {
+  width: 100%;
+}
+
+.table tr {
+  outline: 2px solid;
 }

@@ -10,7 +10,7 @@ export default function CheckoutPage() {
   return (
     <div className={styles.page}>
       <div>
-        Check Out
+        <h1>Check Out</h1>
         <CheckOutForm />
       </div>
     </div>

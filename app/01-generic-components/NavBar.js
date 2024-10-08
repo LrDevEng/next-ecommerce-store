@@ -22,7 +22,9 @@ export default async function NavBar() {
 
   return (
     <nav className={styles.navBar}>
-      <Link href="/">Custom ARCADE</Link>
+      <Link className={styles.eightBit} href="/">
+        Custom ARCADE
+      </Link>
       <Link href="/about">About</Link>
       <Link href="/shop" data-test-id="products-link">
         Shop

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { getFullFileName } from '../../../02-util/parsers';
+import { centsToEuros, getFullFileName } from '../../../02-util/parsers';
 import AddToCartForm from './AddToCartForm';
 import styles from './ProductCardBig.module.css';
 
@@ -19,14 +19,14 @@ export default async function ProductCardBig({ product }) {
         <div>return</div>
       </Link>
       <h1 className={styles.name}>{product.name}</h1>
-      <h3 className={styles.typewriter}>Product Details:</h3>
+      <h3 className="typewriter">Product Details:</h3>
       <div className={styles.eyecatcher}>
         <div className={styles.imgContainer}>
           <Image
             src={`/images/${productImageFullName}`}
             alt={`Image of ${product.name}`}
-            width={300}
-            height={200}
+            width={600}
+            height={400}
             className={styles.img}
             data-test-id="product-image"
           />
@@ -40,7 +40,9 @@ export default async function ProductCardBig({ product }) {
               </tr>
               <tr>
                 <td>Price:</td>
-                <td data-test-id="product-price">{product.price}</td>
+                <td className="euro" data-test-id="product-price">
+                  {centsToEuros(product.price)}
+                </td>
               </tr>
             </tbody>
           </table>
