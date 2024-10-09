@@ -79,7 +79,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: 2rem;
+  padding: 1rem;
   background-color: var(--color-arcade-yellow-shade);
   color: var(--color-arcade-blue-intense);
   box-shadow: 0 0 1rem var(--color-arcade-pink-dark);
@@ -115,7 +115,7 @@ footer {
   box-shadow: 0 0 1rem var(--color-arcade-pink-dark);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .grit-holy-grail {
     grid-template-areas:
       'header'

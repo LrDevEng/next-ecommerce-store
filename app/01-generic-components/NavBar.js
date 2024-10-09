@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { cartCookieName } from '../02-util/constants';
 import { getCookieValue } from '../02-util/cookies';
@@ -25,14 +26,46 @@ export default async function NavBar() {
       <Link className={styles.eightBit} href="/">
         Custom ARCADE
       </Link>
-      <Link href="/about">About</Link>
+      <Link href="/about">
+        <div className={styles.linkBig}>About</div>
+        <div className={styles.linkSmall}>
+          <Image
+            src="/icons/icon-info.svg"
+            alt="About"
+            width={48}
+            height={48}
+          />
+        </div>
+      </Link>
+      <Link href="/blog">
+        <div className={styles.linkBig}>Blog</div>
+        <div className={styles.linkSmall}>
+          <Image
+            src="/icons/icon-newspaper.svg"
+            alt="About"
+            width={48}
+            height={48}
+          />
+        </div>
+      </Link>
       <Link href="/shop" data-test-id="products-link">
-        Shop
+        <div className={styles.linkBig}>Shop</div>
+        <div className={styles.linkSmall}>
+          <Image
+            src="/icons/icon-shopping-bag.svg"
+            alt="Shop"
+            width={48}
+            height={48}
+          />
+        </div>
       </Link>
-      <Link href="/cart" data-test-id="cart-link">
-        Cart
+      <Link className={styles.cartLink} href="/cart" data-test-id="cart-link">
+        <Image src="/icons/icon-cart.svg" alt="Cart" width={48} height={48} />
+        <div
+          className={styles.cartCount}
+          data-test-id="cart-count"
+        >{`${numItemsInCart}`}</div>
       </Link>
-      <div data-test-id="cart-count">{`int count = ${numItemsInCart};`}</div>
     </nav>
   );
 }
