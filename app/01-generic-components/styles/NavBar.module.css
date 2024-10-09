@@ -13,6 +13,7 @@
 
   &:hover {
     transform: translateY(-0.25rem);
+    text-decoration: underline;
   }
 }
 
@@ -24,8 +25,29 @@
 
 .cartLink {
   text-wrap: nowrap;
+  text-decoration: none;
 }
 
 .cartCount {
   display: inline-block;
+}
+
+.linkSmall {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .navBar a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .linkSmall {
+    display: inherit;
+  }
+
+  .linkBig {
+    display: none;
+  }
 }
