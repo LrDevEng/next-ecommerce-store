@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { getFullFileName } from '../02-util/parsers';
+import { getFullFileName } from '../../util/parsers';
 import styles from './ProductCardSmall.module.css';
 
 export default async function ProductCardSmall({ product }) {

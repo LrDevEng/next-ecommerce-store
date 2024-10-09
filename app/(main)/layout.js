@@ -1,7 +1,7 @@
-import './globals.css';
+import '../globals.css';
 import { Press_Start_2P } from 'next/font/google';
 // import localFont from 'next/font/local';
-import NavBar from './01-generic-components/NavBar';
+import NavBar from './components/NavBar';
 
 // const geistSans = localFont({
 //   src: './fonts/GeistVF.woff',
@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
           </header>
           <aside className="sidebar-left" />
           <main>{children}</main>
-          <aside className="sidebar-right" />
+          <aside className="sidebar-right">Standard Right</aside>
           <footer>Footer</footer>
         </div>
       </body>

@@ -1,0 +1,20 @@
+.cartPreview {
+  position: sticky;
+  top: 11.5rem;
+  min-width: fit-content;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: var(--color-arcade-yellow-background);
+  border: 2px solid var(--color-arcade-blue-intense);
+}
+
+.cartPreview table {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  min-width: fit-content;
+}
+
+.cartPreview td {
+  padding: 0.25rem;
+}

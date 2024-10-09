@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import { getProductInsecure } from '../../database/products';
-import { cartCookieName } from '../02-util/constants';
-import { getCookieValue } from '../02-util/cookies';
-import { centsToEuros, getFullFileName } from '../02-util/parsers';
-import { calculateCartTotal } from '../02-util/productCalculations';
+import { getProductInsecure } from '../../../database/products';
+import { cartCookieName } from '../../util/constants';
+import { getCookieValue } from '../../util/cookies';
+import { centsToEuros, getFullFileName } from '../../util/parsers';
+import { calculateCartTotal } from '../../util/productCalculations';
 import CheckOutButton from './CheckOutButton';
 import styles from './page.module.css';
 import RemoveButton from './RemoveButton';
