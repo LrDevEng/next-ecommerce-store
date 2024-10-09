@@ -1,4 +1,8 @@
 export function calculateCartTotal(productsCookie, productsDb) {
+  if (productsCookie.length !== productsDb.length) {
+    throw new Error('Arrays need to have the same length.');
+  }
+
   let total = 0;
   for (const productCookie of productsCookie) {
     total +=
