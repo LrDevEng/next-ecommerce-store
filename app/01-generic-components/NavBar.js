@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { cartCookieName } from '../02-util/constants';
 import { getCookieValue } from '../02-util/cookies';
@@ -29,10 +30,13 @@ export default async function NavBar() {
       <Link href="/shop" data-test-id="products-link">
         Shop
       </Link>
-      <Link href="/cart" data-test-id="cart-link">
-        Cart
+      <Link className={styles.cartLink} href="/cart" data-test-id="cart-link">
+        <Image src="/icons/icon-cart.svg" alt="Cart" width={48} height={48} />
+        <div
+          className={styles.cartCount}
+          data-test-id="cart-count"
+        >{`${numItemsInCart}`}</div>
       </Link>
-      <div data-test-id="cart-count">{`int count = ${numItemsInCart};`}</div>
     </nav>
   );
 }
