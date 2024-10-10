@@ -1,8 +1,8 @@
 .cartPreview {
   min-width: fit-content;
+  width: 100%;
   padding: 0.5rem;
   margin-top: 0.25rem;
-  margin-right: 2rem;
   background-color: var(--color-arcade-yellow-background);
   border: 2px solid var(--color-arcade-blue-intense);
 }
@@ -23,6 +23,7 @@
 }
 
 .container {
-  position: fixed;
+  position: relative;
+  width: 90%;
   margin-top: 6.3rem;
 }
