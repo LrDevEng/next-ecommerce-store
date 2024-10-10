@@ -29,6 +29,10 @@ export default async function CartPreview() {
   let showPreview = await getCookieValue(previewCookieName);
   if (showPreview === undefined) showPreview = true;
 
+  if (total === 0) {
+    return <div />;
+  }
+
   return (
     <div className={styles.container}>
       <PreviewButton showPreview={showPreview} />
