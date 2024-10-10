@@ -1,5 +1,5 @@
 import { config } from 'dotenv-safe';
-import { postgresConfig } from './app/02-util/config.js';
+import { postgresConfig } from './app/util/config.js';
 
 config();
 

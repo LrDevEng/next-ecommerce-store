@@ -1,4 +1,4 @@
-import { getProductsInsecure } from '../../database/products';
+import { getProductsInsecure } from '../../../database/products';
 import styles from './page.module.css';
 import ProductCardSmall from './ProductCardSmall';
 

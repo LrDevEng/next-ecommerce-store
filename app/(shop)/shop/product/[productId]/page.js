@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getProductInsecure } from '../../../../database/products';
+import { getProductInsecure } from '../../../../../database/products';
 import styles from './page.module.css';
 import ProductCardBig from './ProductCardBig';
 

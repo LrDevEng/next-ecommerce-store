@@ -2,8 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { cartCookieName } from '../02-util/constants';
-import { deleteCookie } from '../02-util/cookies';
+import { cartCookieName } from '../../util/constants';
+import { deleteCookie } from '../../util/cookies';
 import styles from './CheckOutForm.module.css';
 
 export default function CheckOutForm() {

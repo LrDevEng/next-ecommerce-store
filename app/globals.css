@@ -89,7 +89,7 @@ header {
   grid-area: sidebar-left;
   background-image: url('../public/images/background.webp');
   background-repeat: repeat-y;
-  background-position: left top;
+  background-position: center top;
   background-size: 180px;
 }
 
@@ -103,7 +103,7 @@ main {
   grid-area: sidebar-right;
   background-image: url('../public/images/background.webp');
   background-repeat: repeat-y;
-  background-position: right top;
+  background-position: center top;
   background-size: 180px;
 }
 
