@@ -1,0 +1,17 @@
+.container {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.container label {
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+  text-overflow: ellipsis;
+}
+
+.container input {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}

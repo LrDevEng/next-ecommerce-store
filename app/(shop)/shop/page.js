@@ -1,6 +1,7 @@
 import { getProductsInsecure } from '../../../database/products';
+import { getFullFileName } from '../../util/parsers';
 import styles from './page.module.css';
-import ProductCardSmall from './ProductCardSmall';
+import ProductGrid from './ProductGrid';
 
 export const metadata = {
   title: 'Shop',
@@ -10,18 +11,20 @@ export const metadata = {
 export default async function ShopPage() {
   const products = await getProductsInsecure();
 
+  const productsWithImgLink = [];
+  for (const product of products) {
+    const imgPath = await getFullFileName(
+      product.name.toLowerCase().replaceAll(' ', '-'),
+      process.cwd() + '\\public\\images',
+    );
+
+    productsWithImgLink.push({ ...product, ...{ path: imgPath } });
+  }
+
   return (
     <div className={styles.page}>
       <h1>Available Parts</h1>
-      <div className={styles.productPreview}>
-        {products.map((product) => {
-          return (
-            <div key={`mc-${product.id}`}>
-              <ProductCardSmall product={product} />
-            </div>
-          );
-        })}
-      </div>
+      <ProductGrid products={productsWithImgLink} />
     </div>
   );
 }
