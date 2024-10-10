@@ -1,10 +1,13 @@
 .cartPreview {
   min-width: fit-content;
+  width: 90%;
   padding: 0.5rem;
   margin-top: 0.25rem;
   margin-right: 2rem;
+  margin-bottom: 1rem;
   background-color: var(--color-arcade-yellow-background);
   border: 2px solid var(--color-arcade-blue-intense);
+  flex: 1;
 }
 
 .cartPreview table {
@@ -12,6 +15,14 @@
   margin-bottom: 0.5rem;
   min-width: fit-content;
   width: 100%;
+}
+
+.cartPreview button {
+  margin-bottom: 2rem;
+}
+
+.cartPreview h3 {
+  margin-top: 2rem;
 }
 
 .cartPreview td {
@@ -23,6 +34,14 @@
 }
 
 .container {
-  position: fixed;
-  margin-top: 6.3rem;
+  margin-top: 6.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.sticky {
+  position: sticky;
+  top: 6.5rem;
 }

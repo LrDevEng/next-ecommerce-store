@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import styles from './GoToCartButton.module.css';
 
-export default function CheckOutButton() {
+export default function GoToCartButton() {
   const router = useRouter();
 
   return (

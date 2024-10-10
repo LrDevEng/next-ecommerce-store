@@ -39,34 +39,37 @@ export default async function CartPreview() {
       {showPreview && (
         <div className={styles.cartPreview}>
           <h3>Cart Preview</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>No.</th>
-                <th>Item</th>
-                <th>Qty.</th>
-              </tr>
-            </thead>
-            <tbody>
-              {productsCookie.map((productCookie, index) => {
-                const productDb = productsDb[index];
-                return (
-                  <tr key={`product-${productCookie.id}`}>
-                    <td>{index + 1}</td>
-                    <td>{productDb.name}</td>
-                    <td>{productCookie.quantity}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-          <p className={styles.total}>
-            <span>Total: </span>
-            <span className="euro" data-test-id="cart-total">
-              {centsToEuros(total)}
-            </span>
-          </p>
-          <GoToCartButton />
+          <div className={styles.sticky}>
+            <hr />
+            <table>
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Item</th>
+                  <th>Qty.</th>
+                </tr>
+              </thead>
+              <tbody>
+                {productsCookie.map((productCookie, index) => {
+                  const productDb = productsDb[index];
+                  return (
+                    <tr key={`product-${productCookie.id}`}>
+                      <td>{index + 1}</td>
+                      <td>{productDb.name}</td>
+                      <td>{productCookie.quantity}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+            <p className={styles.total}>
+              <span>Total: </span>
+              <span className="euro" data-test-id="cart-total">
+                {centsToEuros(total)}
+              </span>
+            </p>
+            <GoToCartButton />
+          </div>
         </div>
       )}
     </div>

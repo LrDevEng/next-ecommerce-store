@@ -5,7 +5,7 @@ import { filterCookieName } from '../../util/constants';
 import { setCookie } from '../../util/cookies';
 import styles from './FilterButton.module.css';
 
-export default function CheckOutButton({ showFilter }) {
+export default function FilterButton({ showFilter }) {
   return (
     <button
       className={styles.button}

@@ -1,7 +1,10 @@
 .container {
+  position: sticky;
+  top: 6.5rem;
   margin-top: 0.5rem;
   display: flex;
   flex-direction: column;
+  margin-bottom: 2rem;
 }
 
 .container label {

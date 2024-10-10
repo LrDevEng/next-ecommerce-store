@@ -92,7 +92,7 @@ header {
   background-position: center top;
   background-size: 180px;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
 }
 
 main {
@@ -107,6 +107,8 @@ main {
   background-repeat: repeat-y;
   background-position: center top;
   background-size: 180px;
+  display: flex;
+  flex-direction: column;
 }
 
 footer {
@@ -115,6 +117,7 @@ footer {
   padding: 1rem;
   background-color: var(--color-arcade-yellow-shade);
   box-shadow: 0 0 1rem var(--color-arcade-pink-dark);
+  z-index: 1;
 }
 
 @media (max-width: 800px) {
