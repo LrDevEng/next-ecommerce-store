@@ -8,7 +8,7 @@ export default function MainLayout({ children }) {
       </header>
       <aside className="sidebar-left" />
       <main>{children}</main>
-      <aside className="sidebar-right">Standard Right Aside</aside>
+      <aside className="sidebar-right" />
       <footer>Footer</footer>
     </div>
   );

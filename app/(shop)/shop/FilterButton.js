@@ -14,10 +14,20 @@ export default function FilterButton({ showFilter }) {
       }}
     >
       <Image
+        className={styles.big}
         src={
           showFilter
             ? '/icons/icon-arrow-forward.svg'
             : '/icons/icon-arrow-back.svg'
+        }
+        alt="About"
+        width={36}
+        height={36}
+      />
+      <Image
+        className={styles.small}
+        src={
+          showFilter ? '/icons/icon-arrow-up.svg' : '/icons/icon-arrow-down.svg'
         }
         alt="About"
         width={36}

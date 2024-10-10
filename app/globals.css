@@ -117,7 +117,6 @@ footer {
   padding: 1rem;
   background-color: var(--color-arcade-yellow-shade);
   box-shadow: 0 0 1rem var(--color-arcade-pink-dark);
-  z-index: 1;
 }
 
 @media (max-width: 800px) {
@@ -137,6 +136,7 @@ footer {
   }
 
   .sidebar-left {
+    background-image: none;
     justify-content: flex-start;
   }
 }
