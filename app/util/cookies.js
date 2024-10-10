@@ -13,11 +13,12 @@ export async function getCookieValue(name) {
 }
 
 // Function to set cookie
-export async function setCookie(name, value) {
-  (await cookies()).set(name, JSON.stringify(value), {
-    httpOnly: true,
-    secure: true,
-  });
+export async function setCookie(
+  name,
+  value,
+  options = { httpOnly: true, secure: true },
+) {
+  (await cookies()).set(name, JSON.stringify(value), options);
 }
 
 // Function to delete cookie

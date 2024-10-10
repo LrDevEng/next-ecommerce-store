@@ -1,8 +1,8 @@
-import '../../globals.css';
+import '../globals.css';
 import { Press_Start_2P } from 'next/font/google';
 // import localFont from 'next/font/local';
-import NavBar from '../../(main)/components/NavBar.js';
-import CartPreview from './CartPreview';
+import NavBar from '../(main)/components/NavBar.js';
+import CartPreview from './shop/CartPreview';
 
 // const geistSans = localFont({
 //   src: './fonts/GeistVF.woff',

@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
           </header>
           <aside className="sidebar-left" />
           <main>{children}</main>
-          <aside className="sidebar-right">Standard Right</aside>
+          <aside className="sidebar-right">Standard Right Aside</aside>
           <footer>Footer</footer>
         </div>
       </body>
