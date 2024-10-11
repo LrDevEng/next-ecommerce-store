@@ -1,5 +1,8 @@
 import { expect, test } from '@jest/globals';
-import { calculateCartTotal } from '../productCalculations';
+import {
+  calculateCartTotal,
+  calculateItemsInCart,
+} from '../productCalculations';
 
 // Test data
 const productsCookieA = [{ id: 1, quantity: 1 }];
@@ -18,6 +21,7 @@ const productsDbC = [
   { id: 3, price: 400 },
 ];
 
+// calculateCartTotal
 test('Unit: calculateCartTotal, Testsuit: valid inputs', () => {
   expect(calculateCartTotal(productsCookieA, productsDbA)).toBe(300);
   expect(calculateCartTotal(productsCookieB, productsDbB)).toBe(700);
@@ -28,3 +32,12 @@ test('Unit: calculateCartTotal, Testsuit: invalid inputs', () => {
     'Arrays need to have the same length.',
   );
 });
+
+// calculateItemsInCart
+test('Unit: calculateItemsInCart, Testsuit: valid inputs', () => {
+  expect(calculateItemsInCart([])).toBe(0);
+  expect(calculateItemsInCart(productsCookieA)).toBe(1);
+  expect(calculateItemsInCart(productsCookieB)).toBe(3);
+});
+
+// *** To Do *** invalid input for calculateItemsInCart

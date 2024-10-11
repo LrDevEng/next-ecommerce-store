@@ -25,3 +25,14 @@ export function calculateCartTotal(productsCookie, productsDb) {
   //   total += productInfo.price * products[i].quantity;
   // }
 }
+
+export function calculateItemsInCart(products) {
+  let numItemsInCart = 0;
+  if (products) {
+    numItemsInCart = products.reduce(
+      (total, product) => total + product.quantity,
+      0,
+    );
+  }
+  return numItemsInCart;
+}
