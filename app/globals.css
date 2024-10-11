@@ -91,6 +91,8 @@ header {
   background-repeat: repeat-y;
   background-position: center top;
   background-size: 180px;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
@@ -105,6 +107,8 @@ main {
   background-repeat: repeat-y;
   background-position: center top;
   background-size: 180px;
+  display: flex;
+  flex-direction: column;
 }
 
 footer {
@@ -129,6 +133,11 @@ footer {
 
   .sidebar-right {
     display: none;
+  }
+
+  .sidebar-left {
+    background-image: none;
+    justify-content: flex-start;
   }
 }
 /* End of holy grail grit layout with sticky header*/

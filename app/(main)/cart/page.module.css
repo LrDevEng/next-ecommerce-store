@@ -17,6 +17,7 @@
 .productImage {
   width: 60px;
   height: auto;
+  max-height: 60px;
   margin: auto;
 }
 

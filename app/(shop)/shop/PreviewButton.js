@@ -5,7 +5,7 @@ import { previewCookieName } from '../../util/constants';
 import { setCookie } from '../../util/cookies';
 import styles from './PreviewButton.module.css';
 
-export default function CheckOutButton({ showPreview }) {
+export default function PreviewButton({ showPreview }) {
   return (
     <button
       className={styles.button}

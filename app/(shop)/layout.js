@@ -1,5 +1,6 @@
 import NavBar from '../(main)/components/NavBar.js';
 import CartPreview from './shop/CartPreview';
+import ProductFilter from './shop/ProductFilter';
 
 export default function ShopLayout({ children }) {
   return (
@@ -7,7 +8,9 @@ export default function ShopLayout({ children }) {
       <header>
         <NavBar />
       </header>
-      <aside className="sidebar-left" />
+      <aside className="sidebar-left">
+        <ProductFilter />
+      </aside>
       <main>{children}</main>
       <aside className="sidebar-right">
         <CartPreview />

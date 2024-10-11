@@ -2,3 +2,83 @@
   margin: 1rem;
   text-align: center;
 }
+
+.page h1 {
+  margin-bottom: 3rem;
+}
+
+.sloganPlatform {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.sloganContainer {
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 500px;
+}
+
+.sloganStart {
+  margin: 0.5rem 2rem;
+  font-family: var(--font-press-start-2p), 'Courier New', Courier, monospace;
+  text-shadow: var(--color-arcade-pink) 1px 1px;
+}
+
+.sloganMiddle {
+  margin: 0.5rem 2rem;
+  font-family: var(--font-press-start-2p), 'Courier New', Courier, monospace;
+  text-shadow: var(--color-arcade-pink) 1px 1px;
+  align-self: center;
+}
+
+.sloganEnd {
+  margin: 0.5rem 2rem;
+  font-family: var(--font-press-start-2p), 'Courier New', Courier, monospace;
+  text-shadow: var(--color-arcade-pink) 1px 1px;
+  align-self: flex-end;
+}
+
+.shopNow {
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.shopNowStart {
+  margin: 0.5rem 1rem;
+  background-color: var(--color-arcade-pink);
+  border: 2px solid var(--color-arcade-pink-shade);
+}
+
+.shopNowMiddle {
+  margin: 0.5rem 1rem;
+  align-self: center;
+  background-color: var(--color-arcade-blue);
+  border: 2px solid var(--color-arcade-blue-shade);
+}
+
+.shopNowEnd {
+  margin: 0.5rem 1rem;
+  align-self: flex-end;
+  background-color: var(--color-arcade-yellow);
+  border: 2px solid var(--color-arcade-yellow-shade);
+}
+
+.blogPost {
+  margin: 1rem;
+  padding: 1rem;
+  height: 300px;
+  width: 100%;
+  border: 2px solid var(--color-arcade-blue-intense);
+}
+
+.blog a {
+  &:hover {
+    text-decoration: underline;
+  }
+}

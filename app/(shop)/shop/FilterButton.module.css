@@ -1,0 +1,29 @@
+.button {
+  height: 48px;
+  width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.big {
+  display: inherit;
+}
+
+.small {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .big {
+    display: none;
+  }
+
+  .small {
+    display: inherit;
+  }
+
+  .button {
+    height: 28px;
+  }
+}

@@ -1,0 +1,40 @@
+.container {
+  margin-top: 6.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex: 1;
+}
+
+.filterArea {
+  min-width: fit-content;
+  width: 90%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  background-color: var(--color-arcade-yellow-background);
+  border: 2px solid var(--color-arcade-blue-intense);
+  flex: 1;
+}
+
+.filterArea h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 800px) {
+  .container {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    position: inherit;
+    align-items: flex-start;
+  }
+
+  .filterArea {
+    margin-left: 0;
+    margin-bottom: 0;
+    width: 100%;
+  }
+}

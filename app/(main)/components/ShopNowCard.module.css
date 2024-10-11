@@ -1,0 +1,8 @@
+.container {
+  padding: 0.5rem;
+  width: var(--width-product-card-small);
+}
+
+.container > * {
+  margin: 0.5rem;
+}

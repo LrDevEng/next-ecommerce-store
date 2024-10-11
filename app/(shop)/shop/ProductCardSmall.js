@@ -1,14 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { getFullFileName } from '../../util/parsers';
 import styles from './ProductCardSmall.module.css';
 
-export default async function ProductCardSmall({ product }) {
-  const productImageFullName = await getFullFileName(
-    product.name.toLowerCase().replaceAll(' ', '-'),
-    process.cwd() + '\\public\\images',
-  );
-
+export default function ProductCardSmall({ product }) {
   return (
     <Link
       className={styles.cardSmall}
@@ -19,7 +13,7 @@ export default async function ProductCardSmall({ product }) {
       <div>{`Product code: ${product.id}`}</div>
       <Image
         className={styles.productImage}
-        src={`/images/${productImageFullName}`}
+        src={`/images/${product.path}`}
         alt={`Image of ${product.name}`}
         width={600}
         height={400}
