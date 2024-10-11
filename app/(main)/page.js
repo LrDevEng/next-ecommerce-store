@@ -39,6 +39,10 @@ export default function HomePage() {
         <div className={styles.blogPost}>Area for featured blog post.</div>
         <Link href="/blog">Read more.</Link>
       </div>
+      <div className={styles.snake}>
+        <h2>Play a game of Snake</h2>
+        <div className={styles.snakeArea}>Area for snake game.</div>
+      </div>
     </div>
   );
 }
