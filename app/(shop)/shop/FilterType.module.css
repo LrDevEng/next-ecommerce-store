@@ -15,6 +15,7 @@
 }
 
 .container input {
+  accent-color: var(--color-arcade-pink);
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
