@@ -1,5 +1,6 @@
 'use server';
 
+import { addOrUpdateProduct } from '../../../../util/cart.js';
 import { cartCookieName } from '../../../../util/constants.js';
 import { getCookieValue, setCookie } from '../../../../util/cookies.js';
 
@@ -12,16 +13,8 @@ export default async function createOrUpdateCookie(productId, quantity) {
     products = [];
   }
 
-  // Try to find product that shall be updated
-  const productToUpdate = products.find((product) => product.id === productId);
-
-  // Create product in cookie in case it does not exist
-  if (!productToUpdate) {
-    products.push({ id: productId, quantity: quantity });
-  } else {
-    // Update product quantity
-    productToUpdate.quantity += quantity;
-  }
+  // Add product to cookie or update quantity if product is already present
+  products = addOrUpdateProduct(products, productId, quantity);
 
   // Set cookie
   await setCookie(cartCookieName, products);
