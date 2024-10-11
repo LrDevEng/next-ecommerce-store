@@ -8,9 +8,9 @@ export default function HomePage() {
     <div className={styles.page}>
       <h2>WELCOME TO</h2>
       <h1>Custom ARCADE</h1>
-      <h3 className={styles.sloganPlatform}>
+      <p className={styles.sloganPlatform}>
         Your trusted platform for building custom arcade machines.
-      </h3>
+      </p>
       <div className={styles.sloganContainer}>
         <h2 className={styles.sloganStart}>Learn.</h2>
         <h2 className={styles.sloganMiddle}>Create.</h2>
