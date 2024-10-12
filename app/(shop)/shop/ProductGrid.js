@@ -16,7 +16,7 @@ export default function ProductGrid({ products }) {
     <div className={styles.productGrid}>
       {products.map((product) => {
         return (
-          <div key={`mc-${product.id}`}>
+          <div key={`product-grid-${product.id}`}>
             <ProductCardSmall product={product} />
           </div>
         );
