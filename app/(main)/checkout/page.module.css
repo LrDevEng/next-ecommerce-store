@@ -11,3 +11,8 @@
 .page h1 {
   text-align: center;
 }
+
+.total {
+  margin: 1rem;
+  text-align: center;
+}

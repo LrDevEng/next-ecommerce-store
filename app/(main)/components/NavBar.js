@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { cartCookieName } from '../../util/constants';
 import { getCookieValue } from '../../util/cookies';
+import { calculateItemsInCart } from '../../util/productCalculations';
 import styles from './NavBar.module.css';
 
 export default async function NavBar() {
@@ -12,14 +13,8 @@ export default async function NavBar() {
     products = [];
   }
 
-  // Add quantity off all products saved in cookie
-  let numItemsInCart = 0;
-  if (products) {
-    numItemsInCart = products.reduce(
-      (total, product) => total + product.quantity,
-      0,
-    );
-  }
+  // Calculate items in cart
+  const numItemsInCart = calculateItemsInCart(products);
 
   return (
     <nav className={styles.navBar}>
