@@ -1,3 +1,4 @@
+import Footer from '../(main)/components/Footer';
 import NavBar from '../(main)/components/NavBar.js';
 import CartPreview from './shop/CartPreview';
 import ProductFilter from './shop/ProductFilter';
@@ -15,7 +16,9 @@ export default function ShopLayout({ children }) {
       <aside className="sidebar-right">
         <CartPreview />
       </aside>
-      <footer>Footer</footer>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }
