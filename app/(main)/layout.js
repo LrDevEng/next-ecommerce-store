@@ -1,3 +1,4 @@
+import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 
 export default function MainLayout({ children }) {
@@ -9,7 +10,9 @@ export default function MainLayout({ children }) {
       <aside className="sidebar-left" />
       <main>{children}</main>
       <aside className="sidebar-right" />
-      <footer>Footer</footer>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }
