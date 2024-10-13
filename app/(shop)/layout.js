@@ -1,5 +1,5 @@
 import Footer from '../(main)/components/Footer';
-import NavBar from '../(main)/components/NavBar.js';
+import NavBar from '../(main)/components/NavBar';
 import CartPreview from './shop/CartPreview';
 import ProductFilter from './shop/ProductFilter';
 

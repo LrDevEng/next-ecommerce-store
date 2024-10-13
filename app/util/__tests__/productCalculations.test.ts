@@ -39,5 +39,3 @@ test('Unit: calculateItemsInCart, Testsuit: valid inputs', () => {
   expect(calculateItemsInCart(productsCookieA)).toBe(1);
   expect(calculateItemsInCart(productsCookieB)).toBe(3);
 });
-
-// *** To Do *** invalid input for calculateItemsInCart
