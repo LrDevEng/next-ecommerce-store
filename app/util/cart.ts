@@ -1,4 +1,4 @@
-type ProductCookie = {
+export type ProductCookie = {
   id: number;
   quantity: number;
 };

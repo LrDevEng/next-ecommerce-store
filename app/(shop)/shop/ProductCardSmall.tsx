@@ -1,8 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { ProductDb } from '../../../database/products';
 import styles from './ProductCardSmall.module.css';
 
-export default function ProductCardSmall({ product }) {
+type Props = {
+  product: ProductDb & { path: string | undefined };
+};
+
+export default function ProductCardSmall({ product }: Props) {
   return (
     <Link
       className={styles.cardSmall}

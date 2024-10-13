@@ -1,4 +1,10 @@
-export function calculateCartTotal(productsCookie, productsDb) {
+import { ProductDb } from '../../database/products';
+import { ProductCookie } from './cart';
+
+export function calculateCartTotal(
+  productsCookie: ProductCookie[],
+  productsDb: ProductDb[],
+): number {
   if (productsCookie.length !== productsDb.length) {
     throw new Error('Arrays need to have the same length.');
   }
@@ -6,7 +12,7 @@ export function calculateCartTotal(productsCookie, productsDb) {
   let total = 0;
   for (const productCookie of productsCookie) {
     total +=
-      productsDb.find((productDb) => productDb.id === productCookie.id).price *
+      productsDb.find((productDb) => productDb.id === productCookie.id)!.price *
       productCookie.quantity;
   }
 
@@ -26,7 +32,7 @@ export function calculateCartTotal(productsCookie, productsDb) {
   // }
 }
 
-export function calculateItemsInCart(products) {
+export function calculateItemsInCart(products: ProductCookie[] | undefined) {
   let numItemsInCart = 0;
   if (products) {
     numItemsInCart = products.reduce(
