@@ -4,5 +4,5 @@ export const metadata = {
 };
 
 export default function OrderConfirmedPage() {
-  return <div>Thank You.</div>;
+  return <h1>Thank You.</h1>;
 }

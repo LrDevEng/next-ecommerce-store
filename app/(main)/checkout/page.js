@@ -1,3 +1,8 @@
+import { getProductInsecure } from '../../../database/products';
+import { cartCookieName } from '../../util/constants';
+import { getCookieValue } from '../../util/cookies';
+import { centsToEuros } from '../../util/parsers';
+import { calculateCartTotal } from '../../util/productCalculations';
 import CheckOutForm from './CheckOutForm';
 import styles from './page.module.css';
 
@@ -6,11 +11,34 @@ export const metadata = {
   description: 'Check out.',
 };
 
-export default function CheckoutPage() {
+export default async function CheckoutPage() {
+  // Get products from cookie
+  let productsCookie = await getCookieValue(cartCookieName);
+
+  // Check datatype of products (cookie value)
+  if (!Array.isArray(productsCookie)) {
+    productsCookie = [];
+  }
+
+  // Get products from database that are saved in cookie
+  const productsDb = [];
+  for (const product of productsCookie) {
+    productsDb.push(await getProductInsecure(product.id));
+  }
+
+  // Calculate cart total
+  const total = await calculateCartTotal(productsCookie, productsDb);
+
   return (
     <div className={styles.page}>
       <div>
         <h1>Check Out</h1>
+        <div className={styles.total}>
+          <span>Total: </span>
+          <span className="euro" data-test-id="checkout-cart-total">
+            {centsToEuros(total)}
+          </span>
+        </div>
         <CheckOutForm />
       </div>
     </div>
