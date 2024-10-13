@@ -1,7 +1,7 @@
 import { cache } from 'react';
 import { sql } from './connect';
 
-type Product = {
+export type ProductDb = {
   id: number;
   name: string;
   type: string;
@@ -11,7 +11,7 @@ type Product = {
 };
 
 export const getProductsInsecure = cache(async () => {
-  const products = await sql<Product[]>`
+  const products = await sql<ProductDb[]>`
     SELECT
       *
     FROM
@@ -21,7 +21,7 @@ export const getProductsInsecure = cache(async () => {
 });
 
 export const getProductInsecure = cache(async (id: number) => {
-  const [product] = await sql<Product[]>`
+  const [product] = await sql<ProductDb[]>`
     SELECT
       *
     FROM
