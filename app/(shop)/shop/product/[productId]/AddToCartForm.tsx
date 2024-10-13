@@ -1,12 +1,17 @@
 'use client';
 
 import { useState } from 'react';
+import { ProductDb } from '../../../../../database/products';
 import createOrUpdateCookie from './actions';
 import styles from './AddToCartForm.module.css';
 
 const minQty = 1;
 
-export default function AddToCartForm({ productId }) {
+type Props = {
+  productId: ProductDb['id'];
+};
+
+export default function AddToCartForm({ productId }: Props) {
   const [quantity, setQuantity] = useState(minQty);
 
   return (

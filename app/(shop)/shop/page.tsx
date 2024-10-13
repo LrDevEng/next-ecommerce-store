@@ -8,7 +8,7 @@ export const metadata = {
   description: 'Buy your favorite mcirocontroller.',
 };
 
-export type ProductDbWithPath = (ProductDb & { path: string | undefined })[];
+type ProductDbWithPath = (ProductDb & { path: string | undefined })[];
 
 export default async function ShopPage() {
   const products = await getProductsInsecure();

@@ -12,11 +12,17 @@ export async function getCookieValue(name: string): Promise<any> {
   return parseJson(cookie.value);
 }
 
+type CookieOptions = {
+  httpOnly: boolean;
+  secure: boolean;
+  expires?: Date;
+};
+
 // Function to set cookie
 export async function setCookie(
   name: string,
   value: any,
-  options = { httpOnly: true, secure: true },
+  options: CookieOptions = { httpOnly: true, secure: true },
 ) {
   (await cookies()).set(name, JSON.stringify(value), options);
 }
