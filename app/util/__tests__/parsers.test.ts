@@ -8,10 +8,3 @@ test('Unit: centsToEuros, Testsuit: valid inputs', () => {
   expect(centsToEuros(3)).toBe('0,03');
   expect(centsToEuros(0)).toBe('0,00');
 });
-
-test('Unit: centsToEuros, Testsuit: invalid inputs', () => {
-  expect(() => centsToEuros('123')).toThrow('Only pass numbers!');
-  expect(() => centsToEuros([123])).toThrow('Only pass numbers!');
-  expect(() => centsToEuros({ cents: 123 })).toThrow('Only pass numbers!');
-  expect(() => centsToEuros(true)).toThrow('Only pass numbers!');
-});

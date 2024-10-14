@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import NavBar from './(main)/components/NavBar.js';
+import Footer from './(main)/components/Footer';
+import NavBar from './(main)/components/NavBar';
 
 export default function RootError() {
   return (
@@ -19,7 +20,9 @@ export default function RootError() {
         </div>
       </main>
       <aside className="sidebar-right">Standard Right Aside</aside>
-      <footer>Footer</footer>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }

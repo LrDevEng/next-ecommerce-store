@@ -5,7 +5,11 @@ import { previewCookieName } from '../../util/constants';
 import { setCookie } from '../../util/cookies';
 import styles from './PreviewButton.module.css';
 
-export default function PreviewButton({ showPreview }) {
+type Props = {
+  showPreview: boolean;
+};
+
+export default function PreviewButton({ showPreview }: Props) {
   return (
     <button
       className={styles.button}

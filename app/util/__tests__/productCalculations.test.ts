@@ -1,4 +1,5 @@
 import { expect, test } from '@jest/globals';
+import { productType } from '../constants';
 import {
   calculateCartTotal,
   calculateItemsInCart,
@@ -6,19 +7,56 @@ import {
 
 // Test data
 const productsCookieA = [{ id: 1, quantity: 1 }];
-const productsDbA = [{ id: 1, price: 300 }];
+const productsDbA = [
+  {
+    id: 1,
+    price: 300,
+    name: '',
+    type: productType.microcontroller,
+    description: '',
+    amount: null,
+  },
+];
 const productsCookieB = [
   { id: 1, quantity: 1 },
   { id: 2, quantity: 2 },
 ];
 const productsDbB = [
-  { id: 1, price: 300 },
-  { id: 2, price: 200 },
+  {
+    id: 1,
+    price: 300,
+    name: '',
+    type: productType.microcontroller,
+    description: '',
+    amount: null,
+  },
+  {
+    id: 2,
+    price: 200,
+    name: '',
+    type: productType.microcontroller,
+    description: '',
+    amount: null,
+  },
 ];
 const productsCookieC = [{ id: 1, quantity: 1 }];
 const productsDbC = [
-  { id: 2, price: 300 },
-  { id: 3, price: 400 },
+  {
+    id: 2,
+    price: 300,
+    name: '',
+    type: productType.microcontroller,
+    description: '',
+    amount: null,
+  },
+  {
+    id: 3,
+    price: 400,
+    name: '',
+    type: productType.microcontroller,
+    description: '',
+    amount: null,
+  },
 ];
 
 // calculateCartTotal
@@ -39,5 +77,3 @@ test('Unit: calculateItemsInCart, Testsuit: valid inputs', () => {
   expect(calculateItemsInCart(productsCookieA)).toBe(1);
   expect(calculateItemsInCart(productsCookieB)).toBe(3);
 });
-
-// *** To Do *** invalid input for calculateItemsInCart

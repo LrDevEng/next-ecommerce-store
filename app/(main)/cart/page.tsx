@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { getProductInsecure } from '../../../database/products';
+import { getProductInsecure, ProductDb } from '../../../database/products';
+import { ProductCookie } from '../../util/cart';
 import { cartCookieName } from '../../util/constants';
 import { getCookieValue } from '../../util/cookies';
 import { centsToEuros, getFullFileName } from '../../util/parsers';
@@ -15,7 +16,7 @@ export const metadata = {
 
 export default async function CartPage() {
   // Get products from cookie
-  let productsCookie = await getCookieValue(cartCookieName);
+  let productsCookie: ProductCookie[] = await getCookieValue(cartCookieName);
 
   // Check datatype of products (cookie value)
   if (!Array.isArray(productsCookie)) {
@@ -23,9 +24,10 @@ export default async function CartPage() {
   }
 
   // Get products from database that are saved in cookie
-  const productsDb = [];
+  const productsDb: ProductDb[] = [];
   for (const product of productsCookie) {
-    productsDb.push(await getProductInsecure(product.id));
+    const productDb = await getProductInsecure(product.id);
+    if (productDb) productsDb.push(productDb);
   }
 
   // Calculate cart total
@@ -49,6 +51,9 @@ export default async function CartPage() {
         <tbody>
           {productsCookie.map(async (productCookie, index) => {
             const productDb = productsDb[index];
+            if (!productDb) {
+              return;
+            }
             const subtotal = productDb.price * productCookie.quantity;
             const productImageFullName = await getFullFileName(
               productDb.name.toLowerCase().replaceAll(' ', '-'),
@@ -93,10 +98,7 @@ export default async function CartPage() {
           {centsToEuros(total)}
         </span>
       </div>
-      <CheckOutButton
-        className={styles.checkOutButton}
-        cartIsEmpty={productsCookie.length < 1}
-      />
+      <CheckOutButton cartIsEmpty={productsCookie.length < 1} />
     </div>
   );
 }

@@ -1,4 +1,5 @@
-import { getProductInsecure } from '../../../database/products';
+import { getProductInsecure, ProductDb } from '../../../database/products';
+import { ProductCookie } from '../../util/cart';
 import { cartCookieName, previewCookieName } from '../../util/constants';
 import { getCookieValue } from '../../util/cookies';
 import { centsToEuros } from '../../util/parsers';
@@ -9,17 +10,14 @@ import PreviewButton from './PreviewButton';
 
 export default async function CartPreview() {
   // Get products from cookie
-  let productsCookie = await getCookieValue(cartCookieName);
-
-  // Check datatype of products (cookie value)
-  if (!Array.isArray(productsCookie)) {
-    productsCookie = [];
-  }
+  const productsCookie: ProductCookie[] =
+    (await getCookieValue(cartCookieName)) || [];
 
   // Get products from database that are saved in cookie
-  const productsDb = [];
+  const productsDb: ProductDb[] = [];
   for (const product of productsCookie) {
-    productsDb.push(await getProductInsecure(product.id));
+    const productDb = await getProductInsecure(product.id);
+    if (productDb) productsDb.push(productDb);
   }
 
   // Calculate cart total
@@ -55,7 +53,7 @@ export default async function CartPreview() {
                   return (
                     <tr key={`product-${productCookie.id}`}>
                       <td>{index + 1}</td>
-                      <td>{productDb.name}</td>
+                      <td>{productDb?.name}</td>
                       <td>{productCookie.quantity}</td>
                     </tr>
                   );

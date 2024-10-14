@@ -1,10 +1,13 @@
 'use server';
 
-import { addOrUpdateProduct } from '../../../../util/cart.js';
-import { cartCookieName } from '../../../../util/constants.js';
-import { getCookieValue, setCookie } from '../../../../util/cookies.js';
+import { addOrUpdateProduct, ProductCookie } from '../../../../util/cart';
+import { cartCookieName } from '../../../../util/constants';
+import { getCookieValue, setCookie } from '../../../../util/cookies';
 
-export default async function createOrUpdateCookie(productId, quantity) {
+export default async function createOrUpdateCookie(
+  productId: ProductCookie['id'],
+  quantity: ProductCookie['quantity'],
+) {
   // Get product information saved in cart cookie or set to base datatype in case cookie does not exist
   let products = (await getCookieValue(cartCookieName)) || [];
 

@@ -4,7 +4,17 @@ import { useRouter } from 'next/navigation';
 import { useFilterType } from '../../stores/useFilterType';
 import styles from './ShopNowCard.module.css';
 
-export default function ShopNowCard({ heading, productType, className }) {
+type Props = {
+  heading: string;
+  productType: string;
+  className: string | undefined;
+};
+
+export default function ShopNowCard({
+  heading,
+  productType,
+  className,
+}: Props) {
   const router = useRouter();
 
   // Get filter state

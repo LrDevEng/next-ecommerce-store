@@ -1,9 +1,14 @@
+import { ReactNode } from 'react';
 import Footer from '../(main)/components/Footer';
-import NavBar from '../(main)/components/NavBar.js';
+import NavBar from '../(main)/components/NavBar';
 import CartPreview from './shop/CartPreview';
 import ProductFilter from './shop/ProductFilter';
 
-export default function ShopLayout({ children }) {
+type Props = {
+  children: ReactNode;
+};
+
+export default function ShopLayout({ children }: Props) {
   return (
     <div className="grit-holy-grail">
       <header>

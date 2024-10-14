@@ -1,7 +1,12 @@
+import { ReactNode } from 'react';
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 
-export default function MainLayout({ children }) {
+type Props = {
+  children: ReactNode;
+};
+
+export default function MainLayout({ children }: Props) {
   return (
     <div className="grit-holy-grail">
       <header>

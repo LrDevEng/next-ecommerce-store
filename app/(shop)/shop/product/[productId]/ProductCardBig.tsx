@@ -1,16 +1,21 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { ProductDb } from '../../../../../database/products';
 import { centsToEuros, getFullFileName } from '../../../../util/parsers';
 import AddToCartForm from './AddToCartForm';
 import styles from './ProductCardBig.module.css';
 
-export default async function ProductCardBig({ product }) {
+type Props = {
+  product: ProductDb;
+};
+
+export default async function ProductCardBig({ product }: Props) {
   const productImageFullName = await getFullFileName(
     product.name.toLowerCase().replaceAll(' ', '-'),
     process.cwd() + '\\public\\images',
   );
 
-  const descriptionParagraphs = product.description.split('\\n');
+  const descriptionParagraphs = product.description?.split('\\n');
 
   return (
     <div className={styles.cardBig}>
@@ -50,18 +55,20 @@ export default async function ProductCardBig({ product }) {
         </div>
       </div>
 
-      <article className={styles.article}>
-        <hr />
-        <h3>Description:</h3>
-        {descriptionParagraphs.map((paragraph) => {
-          return (
-            <p key={`paragraph-${paragraph.slice(1, 20)}`}>
-              <br />
-              {paragraph}
-            </p>
-          );
-        })}
-      </article>
+      {descriptionParagraphs && (
+        <article className={styles.article}>
+          <hr />
+          <h3>Description:</h3>
+          {descriptionParagraphs.map((paragraph) => {
+            return (
+              <p key={`paragraph-${paragraph.slice(1, 20)}`}>
+                <br />
+                {paragraph}
+              </p>
+            );
+          })}
+        </article>
+      )}
 
       <article className={styles.article}>
         <hr />

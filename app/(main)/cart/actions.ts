@@ -1,11 +1,14 @@
 'use server';
 
-import { cartCookieName } from '../../util/constants.js';
-import { getCookieValue, setCookie } from '../../util/cookies.js';
+import { ProductCookie } from '../../util/cart';
+import { cartCookieName } from '../../util/constants';
+import { getCookieValue, setCookie } from '../../util/cookies';
 
-export default async function removeProductFromCookie(productId) {
+export default async function removeProductFromCookie(
+  productId: ProductCookie['id'],
+) {
   // Get product information saved in cart cookie or set to base datatype in case cookie does not exist
-  let products = (await getCookieValue(cartCookieName)) || [];
+  let products: ProductCookie[] = (await getCookieValue(cartCookieName)) || [];
 
   // Check datatype of products (cookie value)
   if (!Array.isArray(products)) {

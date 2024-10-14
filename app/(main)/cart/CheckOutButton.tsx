@@ -3,7 +3,11 @@
 import { useRouter } from 'next/navigation';
 import styles from './CheckOutButton.module.css';
 
-export default function CheckOutButton({ cartIsEmpty }) {
+type Props = {
+  cartIsEmpty: boolean;
+};
+
+export default function CheckOutButton({ cartIsEmpty }: Props) {
   const router = useRouter();
 
   return (

@@ -1,5 +1,14 @@
+export type ProductCookie = {
+  id: number;
+  quantity: number;
+};
+
 // Function to add or update product in cart
-export function addOrUpdateProduct(products, productId, quantity) {
+export function addOrUpdateProduct(
+  products: ProductCookie[],
+  productId: ProductCookie['id'],
+  quantity: ProductCookie['quantity'],
+) {
   // Try to find product that shall be updated
   const productToUpdate = products.find((product) => product.id === productId);
 
