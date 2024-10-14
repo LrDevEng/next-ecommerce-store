@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Footer from './(main)/components/Footer';
 import NavBar from './(main)/components/NavBar';
 
-export default function RootNotFound() {
+export default function NotFound() {
   return (
     <div className="grit-holy-grail">
       <header>
@@ -11,7 +11,10 @@ export default function RootNotFound() {
       <aside className="sidebar-left" />
       <main>
         <div>
-          Sorry this page was not found make sure you visit a page that exists
+          Sorry this page does not exist.
+          <br />
+          <br />
+          Please make sure you enter a valid URL. Thank you.
           <br />
           <br />
           <div>
