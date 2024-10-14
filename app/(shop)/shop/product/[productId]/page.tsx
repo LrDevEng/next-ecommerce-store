@@ -3,7 +3,13 @@ import { getProductInsecure } from '../../../../../database/products';
 import styles from './page.module.css';
 import ProductCardBig from './ProductCardBig';
 
-export async function generateMetadata(props) {
+type Props = {
+  params: Promise<{
+    productId: string;
+  }>;
+};
+
+export async function generateMetadata(props: Props) {
   const productId = (await props.params).productId;
   return {
     title: `Product ${productId}`,
@@ -11,7 +17,7 @@ export async function generateMetadata(props) {
   };
 }
 
-export default async function ProductPage(props) {
+export default async function ProductPage(props: Props) {
   const productId = (await props.params).productId;
   const product = await getProductInsecure(Number(productId));
 

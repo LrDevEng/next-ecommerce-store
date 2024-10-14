@@ -126,7 +126,7 @@ export default function CheckOutForm() {
                   required
                   type="tel"
                   pattern="\d*"
-                  maxLength="19"
+                  maxLength={19}
                   placeholder="xxxx xxxx xxxx xxxx"
                   value={cardNumber}
                   onChange={(event) => setCardNumber(event.currentTarget.value)}
@@ -142,8 +142,8 @@ export default function CheckOutForm() {
                   required
                   type="tel"
                   pattern="\d*"
-                  minLength="4"
-                  maxLength="4"
+                  minLength={4}
+                  maxLength={4}
                   placeholder="mmyy"
                   value={expirationDate}
                   onChange={(event) =>
@@ -161,8 +161,8 @@ export default function CheckOutForm() {
                   required
                   type="tel"
                   pattern="\d*"
-                  minLength="3"
-                  maxLength="3"
+                  minLength={3}
+                  maxLength={3}
                   placeholder="ccv"
                   value={securityCode}
                   onChange={(event) =>

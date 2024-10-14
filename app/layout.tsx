@@ -1,5 +1,10 @@
 import './globals.css';
 import { Press_Start_2P } from 'next/font/google';
+import { ReactNode } from 'react';
+
+type Props = {
+  children: ReactNode;
+};
 
 const pressStart2P = Press_Start_2P({
   weight: '400',
@@ -15,7 +20,7 @@ export const metadata = {
   description: 'Custom ARCADE - Your truested partner in Arcade Gaming.',
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: Props) {
   return (
     <html className={pressStart2P.variable} lang="en">
       <body>{children}</body>
