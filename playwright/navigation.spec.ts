@@ -13,9 +13,7 @@ test('Navigation bar', async ({ page }) => {
     .getByRole('link', { name: 'About' })
     .click();
   await page.waitForURL('/about');
-  await expect(
-    page.getByRole('heading', { name: 'Placeholder for awesome about page.' }),
-  ).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'About' })).toBeVisible();
 
   // Blog page
   await page
