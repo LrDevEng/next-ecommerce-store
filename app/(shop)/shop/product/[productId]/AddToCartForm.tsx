@@ -38,7 +38,7 @@ export default function AddToCartForm({ productId }: Props) {
         }}
         data-test-id="product-add-to-cart"
       >
-        #include "in_cart"
+        Add To Cart
       </button>
     </form>
   );
