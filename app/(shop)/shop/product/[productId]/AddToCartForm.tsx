@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ProductDb } from '../../../../../database/products';
+import type { ProductDb } from '../../../../../database/products';
 import createOrUpdateCookie from './actions';
 import styles from './AddToCartForm.module.css';
 
@@ -38,7 +38,7 @@ export default function AddToCartForm({ productId }: Props) {
         }}
         data-test-id="product-add-to-cart"
       >
-        #include "in_cart"
+        Add To Cart
       </button>
     </form>
   );

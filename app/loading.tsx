@@ -1,10 +1,9 @@
-'use client';
-
-import Link from 'next/link';
 import Footer from './(main)/components/Footer';
+import LoadingSpinner from './(main)/components/LoadingSpinner';
 import NavBar from './(main)/components/NavBar';
+import styles from './Loading.module.css';
 
-export default function RootError() {
+export default function Loading() {
   return (
     <div className="grit-holy-grail">
       <header>
@@ -12,10 +11,10 @@ export default function RootError() {
       </header>
       <aside className="sidebar-left" />
       <main>
-        <div>
-          Ups ... something went wrong.
-          <div>
-            <Link href="/">Return Home</Link>
+        <div className={styles.container}>
+          <div className={styles.text}>Loading ...</div>
+          <div className={styles.spinner}>
+            <LoadingSpinner />
           </div>
         </div>
       </main>

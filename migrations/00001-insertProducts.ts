@@ -1,4 +1,4 @@
-import { Sql } from 'postgres';
+import type { Sql } from 'postgres';
 import { productType } from '../app/util/constants';
 
 const fakeDescriptionMicrocontroller =

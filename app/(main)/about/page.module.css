@@ -2,3 +2,15 @@
   margin: 1rem;
   text-align: center;
 }
+
+.page a {
+  text-decoration: underline;
+}
+
+.page h2 {
+  margin: 1rem;
+}
+
+.page ul {
+  list-style-type: none;
+}

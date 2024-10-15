@@ -1,5 +1,5 @@
-import { ProductDb } from '../../database/products';
-import { ProductCookie } from './cart';
+import type { ProductDb } from '../../database/products';
+import type { ProductCookie } from './cart';
 
 export function calculateCartTotal(
   productsCookie: ProductCookie[],

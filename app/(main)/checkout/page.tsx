@@ -1,5 +1,6 @@
-import { getProductInsecure, ProductDb } from '../../../database/products';
-import { ProductCookie } from '../../util/cart';
+import type { ProductDb } from '../../../database/products';
+import { getProductInsecure } from '../../../database/products';
+import type { ProductCookie } from '../../util/cart';
 import { cartCookieName } from '../../util/constants';
 import { getCookieValue } from '../../util/cookies';
 import { centsToEuros } from '../../util/parsers';
