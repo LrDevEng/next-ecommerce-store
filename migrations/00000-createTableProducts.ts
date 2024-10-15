@@ -7,6 +7,7 @@ export async function up(sql: Sql) {
       name varchar(100) NOT NULL,
       type varchar(100) NOT NULL,
       price integer NOT NULL,
+      img_name varchar(200) NOT NULL,
       amount integer,
       description varchar(2000)
     )

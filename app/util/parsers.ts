@@ -1,4 +1,3 @@
-import { promises as fs } from 'node:fs';
 import sjson from 'secure-json-parse';
 
 // Secure json parser
@@ -12,10 +11,10 @@ export function parseJson(json: any): any {
 }
 
 // Return full file name (file name + extionson) if given file name and file location (directory)
-export async function getFullFileName(fileName: string, dir: string) {
-  const files = await fs.readdir(dir);
-  return files.find((file) => file.startsWith(fileName));
-}
+// export async function getFullFileName(fileName: string, dir: string) {
+//   const files = await fs.readdir(dir);
+//   return files.find((file) => file.startsWith(fileName));
+// }
 
 // Cents to euros
 export function centsToEuros(cents: number) {

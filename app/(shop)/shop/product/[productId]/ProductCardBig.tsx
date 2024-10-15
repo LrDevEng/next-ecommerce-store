@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { ProductDb } from '../../../../../database/products';
-import { centsToEuros, getFullFileName } from '../../../../util/parsers';
+import { centsToEuros } from '../../../../util/parsers';
 import AddToCartForm from './AddToCartForm';
 import styles from './ProductCardBig.module.css';
 
@@ -9,12 +9,7 @@ type Props = {
   product: ProductDb;
 };
 
-export default async function ProductCardBig({ product }: Props) {
-  const productImageFullName = await getFullFileName(
-    product.name.toLowerCase().replaceAll(' ', '-'),
-    process.cwd() + '\\public\\images',
-  );
-
+export default function ProductCardBig({ product }: Props) {
   const descriptionParagraphs = product.description?.split('\\n');
 
   return (
@@ -28,7 +23,7 @@ export default async function ProductCardBig({ product }: Props) {
       <div className={styles.eyecatcher}>
         <div className={styles.imgContainer}>
           <Image
-            src={`/images/${productImageFullName}`}
+            src={`/images/${product.imgName}`}
             alt={`Image of ${product.name}`}
             width={600}
             height={400}

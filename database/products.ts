@@ -8,6 +8,7 @@ export type ProductDb = {
   price: number;
   amount: number | null;
   description: string | null;
+  imgName: string;
 };
 
 export const getProductsInsecure = cache(async () => {

@@ -7,7 +7,7 @@ import ProductCardSmall from './ProductCardSmall';
 import styles from './ProductGrid.module.css';
 
 type Props = {
-  products: (ProductDb & { path: string | undefined })[];
+  products: ProductDb[];
 };
 
 export default function ProductGrid({ products }: Props) {

@@ -4,7 +4,7 @@ import { getProductInsecure } from '../../../database/products';
 import type { ProductCookie } from '../../util/cart';
 import { cartCookieName } from '../../util/constants';
 import { getCookieValue } from '../../util/cookies';
-import { centsToEuros, getFullFileName } from '../../util/parsers';
+import { centsToEuros } from '../../util/parsers';
 import { calculateCartTotal } from '../../util/productCalculations';
 import CheckOutButton from './CheckOutButton';
 import styles from './page.module.css';
@@ -50,16 +50,12 @@ export default async function CartPage() {
           </tr>
         </thead>
         <tbody>
-          {productsCookie.map(async (productCookie, index) => {
+          {productsCookie.map((productCookie, index) => {
             const productDb = productsDb[index];
             if (!productDb) {
-              return;
+              return <div key={`product-${productCookie.id}`} />;
             }
             const subtotal = productDb.price * productCookie.quantity;
-            const productImageFullName = await getFullFileName(
-              productDb.name.toLowerCase().replaceAll(' ', '-'),
-              process.cwd() + '\\public\\images',
-            );
 
             return (
               <tr
@@ -71,7 +67,7 @@ export default async function CartPage() {
                   <div className={styles.imageContainer}>
                     <Image
                       className={styles.productImage}
-                      src={`/images/${productImageFullName}`}
+                      src={`/images/${productDb.imgName}`}
                       alt={`Image of ${productDb.name}`}
                       width={600}
                       height={400}

@@ -17,6 +17,7 @@ const products = [
     type: productType.microcontroller,
     price: 3822,
     description: fakeDescriptionMicrocontroller,
+    imgName: 'arduino-mega-2560-rev3.jpg',
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ const products = [
     type: productType.microcontroller,
     price: 2672,
     description: fakeDescriptionMicrocontroller,
+    imgName: 'arduino-nano-33-iot.jpg',
   },
   {
     id: 3,
@@ -31,6 +33,7 @@ const products = [
     type: productType.microcontroller,
     price: 2461,
     description: fakeDescriptionMicrocontroller,
+    imgName: 'arduino-uno-r4-wifi.jpg',
   },
   {
     id: 4,
@@ -38,6 +41,7 @@ const products = [
     type: productType.microcontroller,
     price: 2037,
     description: fakeDescriptionMicrocontroller,
+    imgName: 'arduino-uno-rev3.jpg',
   },
   {
     id: 5,
@@ -45,6 +49,7 @@ const products = [
     type: productType.microcontroller,
     price: 2790,
     description: fakeDescriptionMicrocontroller,
+    imgName: 'bluefruit-le-usb-sniffer-nrf51822-v2.jpg',
   },
   {
     id: 6,
@@ -52,6 +57,7 @@ const products = [
     type: productType.microcontroller,
     price: 1690,
     description: fakeDescriptionMicrocontroller,
+    imgName: 'nordic-semiconductor-nrf52840.jpg',
   },
   {
     id: 7,
@@ -59,6 +65,7 @@ const products = [
     type: productType.microcontroller,
     price: 2380,
     description: fakeDescriptionMicrocontroller,
+    imgName: 'sparkfun-thing-plus-esp32-wroom.jpg',
   },
   {
     id: 8,
@@ -66,6 +73,7 @@ const products = [
     type: productType.microcontroller,
     price: 726,
     description: fakeDescriptionMicrocontroller,
+    imgName: 'raspberry-pi-pico-wh-rp2040.jpg',
   },
   {
     id: 9,
@@ -73,6 +81,7 @@ const products = [
     type: productType.microcontroller,
     price: 958,
     description: fakeDescriptionMicrocontroller,
+    imgName: 'waveshare-esp32-c6-wroom-1-n8.jpg',
   },
   {
     id: 10,
@@ -80,6 +89,7 @@ const products = [
     type: productType.microcontroller,
     price: 998,
     description: fakeDescriptionMicrocontroller,
+    imgName: 'waveshare-esp32-s3-nano.jpg',
   },
   {
     id: 11,
@@ -87,6 +97,7 @@ const products = [
     type: productType.joystick,
     price: 1567,
     description: fakeDescriptionJoystick,
+    imgName: 'il-eurojoystick-red.webp',
   },
   {
     id: 12,
@@ -94,6 +105,7 @@ const products = [
     type: productType.joystick,
     price: 1012,
     description: fakeDescriptionJoystick,
+    imgName: 'paradise-black-top.webp',
   },
   {
     id: 13,
@@ -101,6 +113,7 @@ const products = [
     type: productType.joystick,
     price: 1567,
     description: fakeDescriptionJoystick,
+    imgName: 'sanwa-jlfd-tp-8yd.webp',
   },
   {
     id: 14,
@@ -108,6 +121,7 @@ const products = [
     type: productType.joystick,
     price: 2769,
     description: fakeDescriptionJoystick,
+    imgName: 'crown-cwl-309fj-dx.webp',
   },
   {
     id: 15,
@@ -115,6 +129,7 @@ const products = [
     type: productType.joystick,
     price: 2030,
     description: fakeDescriptionJoystick,
+    imgName: 'seimitsu-ls-58.webp',
   },
   {
     id: 16,
@@ -122,6 +137,7 @@ const products = [
     type: productType.button,
     price: 254,
     description: fakeDescriptionButton,
+    imgName: 'sanwa-obsf-30-snap-in.webp',
   },
   {
     id: 17,
@@ -129,13 +145,15 @@ const products = [
     type: productType.button,
     price: 245,
     description: fakeDescriptionButton,
+    imgName: 'il-psl-l-concave.webp',
   },
   {
     id: 18,
-    name: 'Crown SAMDUCKSA SDB-202M Cherry',
+    name: 'SAMDUCKSA SDB-202M Cherry',
     type: productType.button,
     price: 550,
     description: fakeDescriptionButton,
+    imgName: 'samducksa-sdb-202m-cherry.webp',
   },
   {
     id: 19,
@@ -143,6 +161,7 @@ const products = [
     type: productType.button,
     price: 231,
     description: fakeDescriptionButton,
+    imgName: 'obs-mx-switch.webp',
   },
   {
     id: 20,
@@ -150,6 +169,7 @@ const products = [
     type: productType.button,
     price: 176,
     description: fakeDescriptionButton,
+    imgName: 'paradise-led-button.webp',
   },
 ];
 
@@ -161,14 +181,16 @@ export async function up(sql: Sql) {
           name,
           type,
           price,
-          description
+          description,
+          img_name
         )
       VALUES
         (
           ${product.name},
           ${product.type},
           ${product.price},
-          ${product.description}
+          ${product.description},
+          ${product.imgName}
         )
     `;
   }

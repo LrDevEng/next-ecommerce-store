@@ -4,7 +4,7 @@ import type { ProductDb } from '../../../database/products';
 import styles from './ProductCardSmall.module.css';
 
 type Props = {
-  product: ProductDb & { path: string | undefined };
+  product: ProductDb;
 };
 
 export default function ProductCardSmall({ product }: Props) {
@@ -18,7 +18,7 @@ export default function ProductCardSmall({ product }: Props) {
       <div>{`Product code: ${product.id}`}</div>
       <Image
         className={styles.productImage}
-        src={`/images/${product.path}`}
+        src={`/images/${product.imgName}`}
         alt={`Image of ${product.name}`}
         width={600}
         height={400}
