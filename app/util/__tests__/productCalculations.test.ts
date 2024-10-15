@@ -15,6 +15,7 @@ const productsDbA = [
     type: productType.microcontroller,
     description: '',
     amount: null,
+    imgName: '',
   },
 ];
 const productsCookieB = [
@@ -29,6 +30,7 @@ const productsDbB = [
     type: productType.microcontroller,
     description: '',
     amount: null,
+    imgName: '',
   },
   {
     id: 2,
@@ -37,6 +39,7 @@ const productsDbB = [
     type: productType.microcontroller,
     description: '',
     amount: null,
+    imgName: '',
   },
 ];
 const productsCookieC = [{ id: 1, quantity: 1 }];
@@ -48,6 +51,7 @@ const productsDbC = [
     type: productType.microcontroller,
     description: '',
     amount: null,
+    imgName: '',
   },
   {
     id: 3,
@@ -56,6 +60,7 @@ const productsDbC = [
     type: productType.microcontroller,
     description: '',
     amount: null,
+    imgName: '',
   },
 ];
 
