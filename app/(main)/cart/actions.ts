@@ -1,6 +1,6 @@
 'use server';
 
-import { ProductCookie } from '../../util/cart';
+import type { ProductCookie } from '../../util/cart';
 import { cartCookieName } from '../../util/constants';
 import { getCookieValue, setCookie } from '../../util/cookies';
 

@@ -4,10 +4,15 @@ type Props = {
   author: string;
   date: Date;
   title: string;
-  article: string;
+  articleText: string;
 };
 
-export default function BlogArticle({ author, date, title, article }: Props) {
+export default function BlogArticle({
+  author,
+  date,
+  title,
+  articleText,
+}: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.info}>
@@ -22,7 +27,7 @@ export default function BlogArticle({ author, date, title, article }: Props) {
         <h2>{title}</h2>
       </div>
       <br />
-      <article className={styles.article}>{article}</article>
+      <article className={styles.text}>{articleText}</article>
     </div>
   );
 }

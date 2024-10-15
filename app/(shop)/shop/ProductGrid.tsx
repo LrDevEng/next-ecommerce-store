@@ -1,6 +1,6 @@
 'use client';
 
-import { ProductDb } from '../../../database/products';
+import type { ProductDb } from '../../../database/products';
 import { useFilterType } from '../../stores/useFilterType';
 import { productType } from '../../util/constants';
 import ProductCardSmall from './ProductCardSmall';

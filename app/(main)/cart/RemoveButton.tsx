@@ -1,6 +1,6 @@
 'use client';
 
-import { ProductCookie } from '../../util/cart';
+import type { ProductCookie } from '../../util/cart';
 import removeProductFromCookie from './actions';
 
 type Props = {

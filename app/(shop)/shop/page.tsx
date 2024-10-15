@@ -1,4 +1,5 @@
-import { getProductsInsecure, ProductDb } from '../../../database/products';
+import type { ProductDb } from '../../../database/products';
+import { getProductsInsecure } from '../../../database/products';
 import { getFullFileName } from '../../util/parsers';
 import styles from './page.module.css';
 import ProductGrid from './ProductGrid';

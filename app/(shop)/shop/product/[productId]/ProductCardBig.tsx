@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ProductDb } from '../../../../../database/products';
+import type { ProductDb } from '../../../../../database/products';
 import { centsToEuros, getFullFileName } from '../../../../util/parsers';
 import AddToCartForm from './AddToCartForm';
 import styles from './ProductCardBig.module.css';

@@ -1,6 +1,6 @@
 import './globals.css';
 import { Press_Start_2P } from 'next/font/google';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 type Props = {
   children: ReactNode;
