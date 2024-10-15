@@ -51,7 +51,12 @@ export default function AboutPage() {
             Freepik
           </Link>
         </p>
-        <p>Social media icons designed by: </p>
+        <p>
+          Social media icons designed by:{' '}
+          <Link href="https://icons8.com/" target="_blank">
+            icons8
+          </Link>
+        </p>
         <p>
           Navigation icons designed by:{' '}
           <Link href="https://fonts.google.com/icons" target="_blank">
