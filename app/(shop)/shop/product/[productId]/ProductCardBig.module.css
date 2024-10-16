@@ -91,3 +91,11 @@
     transform: rotateX(360deg);
   }
 }
+
+.specList {
+  margin-left: 2rem;
+}
+
+.specList li {
+  margin-top: 0.5rem;
+}
