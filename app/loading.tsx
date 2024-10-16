@@ -11,7 +11,7 @@ export default function Loading() {
       </header>
       <aside className="sidebar-left" />
       <main>
-        <div className={styles.container}>
+        <div className={styles.container} data-test-id="loading">
           <div className={styles.text}>Loading ...</div>
           <div className={styles.spinner}>
             <LoadingSpinner />
