@@ -20,5 +20,5 @@ export function parseJson(json: any): any {
 export function centsToEuros(cents: number) {
   let centsAsString = cents.toString();
   centsAsString = centsAsString.padStart(3, '0');
-  return `${centsAsString.slice(0, -2)},${centsAsString.slice(-2)}`;
+  return `${centsAsString.slice(0, -2)}.${centsAsString.slice(-2)}`;
 }
