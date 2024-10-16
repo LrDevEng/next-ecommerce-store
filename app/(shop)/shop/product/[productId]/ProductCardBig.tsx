@@ -25,8 +25,8 @@ export default function ProductCardBig({ product }: Props) {
           <Image
             src={`/images/${product.imgName}`}
             alt={`Image of ${product.name}`}
-            width={600}
-            height={400}
+            width={300}
+            height={200}
             className={styles.img}
             data-test-id="product-image"
           />

@@ -69,8 +69,8 @@ export default async function CartPage() {
                       className={styles.productImage}
                       src={`/images/${productDb.imgName}`}
                       alt={`Image of ${productDb.name}`}
-                      width={600}
-                      height={400}
+                      width={300}
+                      height={200}
                       style={{ backgroundColor: 'gray' }}
                     />
                   </div>

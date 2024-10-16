@@ -20,8 +20,8 @@ export default function ProductCardSmall({ product }: Props) {
         className={styles.productImage}
         src={`/images/${product.imgName}`}
         alt={`Image of ${product.name}`}
-        width={600}
-        height={400}
+        width={300}
+        height={200}
         style={{ backgroundColor: 'gray' }}
         data-test-id="product-image"
       />
