@@ -39,7 +39,7 @@ test('Checkout flow', async ({ page }) => {
   await expect(page.getByTestId('checkout-security-code')).toBeVisible();
   await expect(page.getByTestId('checkout-confirm-order')).toBeVisible();
   await expect(page.getByTestId('checkout-cart-total')).toBeVisible();
-  await expect(page.getByTestId('checkout-cart-total')).toContainText('64,94');
+  await expect(page.getByTestId('checkout-cart-total')).toContainText('64.94');
 
   // Check that it is not possible to check out with empty fields
   await page.getByTestId('checkout-confirm-order').click();

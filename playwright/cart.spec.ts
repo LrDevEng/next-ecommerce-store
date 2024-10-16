@@ -39,9 +39,9 @@ test('Add, update and delete items from cart', async ({ page }) => {
     'Arduino Nano 33 IoT',
   );
   await expect(page.getByTestId('cart-product-quantity-2')).toHaveText('2');
-  await expect(page.getByTestId('cart-product-2')).toContainText('53,44');
+  await expect(page.getByTestId('cart-product-2')).toContainText('53.44');
   await expect(page.getByTestId('cart-product-remove-2')).toBeVisible();
-  await expect(page.getByTestId('cart-total')).toHaveText('53,44');
+  await expect(page.getByTestId('cart-total')).toHaveText('53.44');
 
   // Add more of product 2 to cart
   await page.getByTestId('products-link').click();
@@ -66,14 +66,14 @@ test('Add, update and delete items from cart', async ({ page }) => {
     'Arduino Mega 2560 Rev3',
   );
   await expect(page.getByTestId('cart-product-quantity-1')).toHaveText('4');
-  await expect(page.getByTestId('cart-product-1')).toContainText('152,88');
+  await expect(page.getByTestId('cart-product-1')).toContainText('152.88');
   await expect(page.getByTestId('cart-product-remove-1')).toBeVisible();
   await expect(page.getByTestId('cart-product-quantity-2')).toHaveText('3');
-  await expect(page.getByTestId('cart-product-2')).toContainText('80,16');
-  await expect(page.getByTestId('cart-total')).toHaveText('233,04');
+  await expect(page.getByTestId('cart-product-2')).toContainText('80.16');
+  await expect(page.getByTestId('cart-total')).toHaveText('233.04');
 
   // Check remove button functionality
   await page.getByTestId('cart-product-remove-1').click();
   await expect(page.getByTestId('cart-count')).toHaveText('3');
-  await expect(page.getByTestId('cart-total')).toHaveText('80,16');
+  await expect(page.getByTestId('cart-total')).toHaveText('80.16');
 });
