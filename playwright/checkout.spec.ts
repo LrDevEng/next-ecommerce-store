@@ -57,7 +57,7 @@ test('Checkout flow', async ({ page }) => {
   await page.getByTestId('checkout-postal-code').fill('23439');
   await page.getByTestId('checkout-country').fill('Schweden');
   await page.getByTestId('checkout-credit-card').fill('1234123412341234');
-  await page.getByTestId('checkout-expiration-date').fill('1234');
+  await page.getByTestId('checkout-expiration-date').fill('12/34');
   await page.getByTestId('checkout-security-code').fill('123');
 
   // Check out and go to thank you page
