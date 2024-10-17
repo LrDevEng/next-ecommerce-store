@@ -1,4 +1,10 @@
 import type { Sql } from 'postgres';
+import { z } from 'zod';
+
+export const highscoreSchema = z.object({
+  name: z.string().max(100),
+  score: z.number(),
+});
 
 export async function up(sql: Sql) {
   await sql`
