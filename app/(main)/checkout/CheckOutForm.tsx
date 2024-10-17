@@ -140,11 +140,10 @@ export default function CheckOutForm() {
                 <input
                   name="expirationDate"
                   required
-                  type="tel"
-                  pattern="\d*"
-                  minLength={4}
-                  maxLength={4}
-                  placeholder="mmyy"
+                  pattern="\d\d\/\d\d"
+                  minLength={5}
+                  maxLength={5}
+                  placeholder="mm/yy"
                   value={expirationDate}
                   onChange={(event) =>
                     setExpirationDate(event.currentTarget.value)
