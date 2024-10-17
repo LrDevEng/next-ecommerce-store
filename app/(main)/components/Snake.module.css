@@ -1,0 +1,57 @@
+.playgorund {
+  margin: auto;
+  position: relative;
+  width: 50vw;
+  max-width: 50vh;
+  height: 50vw;
+  max-height: 50vh;
+  background-color: var(--color-arcade-yellow);
+  display: flex;
+  flex-direction: column;
+  border: 1rem solid var(--color-arcade-yellow-shade);
+}
+
+.row {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.tile {
+  flex: 1;
+  min-height: 10px;
+  min-width: 10px;
+}
+
+.snake {
+  background-color: var(--color-arcade-pink);
+}
+
+.food {
+  background-color: var(--color-arcade-blue);
+}
+
+.gameInfo {
+  width: 50vw;
+  max-width: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1rem auto;
+}
+
+.gameInfo > * {
+  margin-top: 0.5rem;
+}
+
+.instructions {
+  margin: 1rem auto;
+  width: 50vw;
+  max-width: 50vh;
+}
+
+.currentScore {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}

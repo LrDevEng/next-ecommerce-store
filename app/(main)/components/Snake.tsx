@@ -1,0 +1,225 @@
+'use client';
+
+import { useCallback, useEffect, useState } from 'react';
+import { useKeyPress } from '../../hooks/useKeyPress';
+import styles from './Snake.module.css';
+
+enum Direction {
+  up,
+  down,
+  left,
+  right,
+}
+
+type Coordinate = {
+  x: number;
+  y: number;
+};
+
+const tileState = {
+  blank: 'blank',
+  food: 'food',
+  snake: 'snake',
+};
+
+const snakeStartingPosition = [{ x: 10, y: 10 }];
+
+export default function Snake() {
+  const gridSize = 20;
+  const [snake, setSnake] = useState<Coordinate[]>(snakeStartingPosition);
+  const [direction, setDirection] = useState<Direction>(Direction.right);
+  const [food, setFood] = useState<Coordinate>({ x: 5, y: 5 });
+  const [isRunning, setIsRunning] = useState(false);
+  const [player, setPlayer] = useState('');
+
+  // const playground = Array(gridSize)
+  //   .fill('')
+  //   .map(() => Array(gridSize).fill('') as string[]);
+
+  const playground = [];
+  for (let i = 0; i < gridSize; i++) {
+    const row = [];
+    for (let j = 0; j < gridSize; j++) {
+      row.push(`idx-${i}-${j}`);
+    }
+    playground.push(row);
+  }
+
+  // Custom hooks to manage key events
+  useKeyPress(() => {
+    setDirection(Direction.up);
+  }, ['KeyW', 'ArrowUp']);
+  useKeyPress(() => {
+    setDirection(Direction.down);
+  }, ['KeyS', 'ArrowDown']);
+  useKeyPress(() => {
+    setDirection(Direction.left);
+  }, ['KeyA', 'ArrowLeft']);
+  useKeyPress(() => {
+    setDirection(Direction.right);
+  }, ['KeyD', 'ArrowRight']);
+  useKeyPress(() => {
+    startGame();
+  }, ['Enter']);
+
+  // Start game
+  function startGame() {
+    if (player.length > 0) {
+      if (!isRunning) {
+        setIsRunning(true);
+      }
+    } else {
+      alert('Please enter your name to start playing.');
+    }
+  }
+
+  // Generate random food coordinate
+  const randomFood = useCallback(() => {
+    const x = Math.floor(Math.random() * (gridSize - 1));
+    const y = Math.floor(Math.random() * (gridSize - 1));
+
+    const isOnSnake = snake.some((value) => value.x === x && value.y === y);
+
+    if (isOnSnake) {
+      return randomFood();
+    } else {
+      return { x: x, y: y };
+    }
+  }, [snake]);
+
+  // Reset game
+  const resetGame = useCallback(() => {
+    setIsRunning(false);
+    setSnake(snakeStartingPosition);
+    setDirection(Direction.right);
+    setFood(randomFood());
+  }, [randomFood]);
+
+  // Check for collision
+  const checkCollision = useCallback(() => {
+    const head = snake[0]!;
+
+    // Check if snake hit playground boundaries
+    if (head.x < 0 || head.x >= gridSize || head.y < 0 || head.y >= gridSize) {
+      resetGame();
+    }
+
+    // Check if snake hit itself
+    const snakeCopy = [...snake];
+    snakeCopy.shift();
+    if (snakeCopy.some((value) => value.x === head.x && value.y === head.y)) {
+      resetGame();
+    }
+  }, [snake, resetGame]);
+
+  // Move snake into current direction by one step
+  const move = useCallback(() => {
+    const snakeCopy = [...snake];
+    const head = { ...snakeCopy[0]! };
+    switch (direction) {
+      case Direction.up: {
+        head.y--;
+        break;
+      }
+      case Direction.down: {
+        head.y++;
+        break;
+      }
+      case Direction.left: {
+        head.x--;
+        break;
+      }
+      default: {
+        head.x++;
+        break;
+      }
+    }
+
+    snakeCopy.unshift(head);
+
+    if (head.x === food.x && head.y === food.y) {
+      setFood(randomFood());
+    } else {
+      snakeCopy.pop();
+    }
+    setSnake(snakeCopy);
+  }, [direction, snake, food, randomFood]);
+
+  // Game loop
+  useEffect(() => {
+    if (isRunning) {
+      const interval = setInterval(() => {
+        move();
+        checkCollision();
+      }, 200);
+      return () => clearInterval(interval);
+    }
+  }, [isRunning, snake, move, checkCollision]);
+
+  function deriveTileState(coordinate: Coordinate) {
+    // Check if tile is part of snake
+    const isSnake = snake.some(
+      (value) => value.x === coordinate.x && value.y === coordinate.y,
+    );
+    if (isSnake) {
+      return tileState.snake;
+    }
+
+    // Check if tile is food
+    if (food.x === coordinate.x && food.y === coordinate.y) {
+      return tileState.food;
+    }
+
+    // Tile is blank when it is neither snake nor food
+    return tileState.blank;
+  }
+
+  return (
+    <div>
+      <p className={styles.instructions}>
+        Play the all-time mobile classic and break the Custom ARCADE high score.
+      </p>
+      <p className={styles.instructions}>
+        Enter your name and hit the 'ENTER' key to start the game.
+      </p>
+      <p className={styles.instructions}>
+        Use the 'W', 'A', 'S', 'D' or the arrow keys to control the snake.
+      </p>
+      <div className={styles.gameInfo}>
+        <label htmlFor="name">GAMER Name:</label>
+        <input
+          id="name"
+          value={player}
+          onChange={(event) => setPlayer(event.currentTarget.value)}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') {
+              event.currentTarget.blur();
+            }
+          }}
+        />
+
+        <span className={styles.currentScore}>
+          Current score: {snake.length}
+        </span>
+      </div>
+
+      <div className={styles.playgorund}>
+        {playground.map((row, rowIdx) => {
+          return (
+            <div className={styles.row} key={`row-${row[rowIdx]}`}>
+              {row.map((col, colIdx) => {
+                const state = deriveTileState({ x: colIdx, y: rowIdx });
+                return (
+                  <div
+                    className={`${styles.tile} ${state === tileState.snake && styles.snake} ${state === tileState.food && styles.food}`}
+                    key={`tile-${col[colIdx]}`}
+                  />
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}

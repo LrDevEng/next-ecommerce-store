@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { productType } from '../util/constants';
 import BlogArticle from './blog/BlogArticle';
 import ShopNowCard from './components/ShopNowCard';
+import Snake from './components/Snake';
 import styles from './page.module.css';
 
 const article =
@@ -49,6 +50,10 @@ export default function HomePage() {
           />
         </div>
         <Link href="/blog">Read more.</Link>
+      </div>
+      <div className={styles.snake}>
+        <h2>Play A Game Of Snake</h2>
+        <Snake />
       </div>
     </div>
   );
