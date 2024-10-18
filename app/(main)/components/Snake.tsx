@@ -23,6 +23,7 @@ const tileState = {
 };
 
 const snakeStartingPosition = [{ x: 10, y: 10 }];
+const initialInterval = 250;
 
 export default function Snake() {
   const gridSize = 20;
@@ -31,6 +32,7 @@ export default function Snake() {
   const [food, setFood] = useState<Coordinate>({ x: 5, y: 5 });
   const [isRunning, setIsRunning] = useState(false);
   const [player, setPlayer] = useState('');
+  const [gameInterval, setGameInterval] = useState(initialInterval);
 
   // const playground = Array(gridSize)
   //   .fill('')
@@ -87,12 +89,26 @@ export default function Snake() {
     }
   }, [snake]);
 
+  // Reduce game interval every time snake eats food
+  const updateGameInterval = useCallback(() => {
+    if (gameInterval > 200) {
+      setGameInterval(gameInterval - 10);
+    } else if (gameInterval > 150) {
+      setGameInterval(gameInterval - 5);
+    } else if (gameInterval > 100) {
+      setGameInterval(gameInterval - 2);
+    } else if (gameInterval > 50) {
+      setGameInterval(gameInterval - 1);
+    }
+  }, [gameInterval]);
+
   // Reset game
   const resetGame = useCallback(() => {
     setIsRunning(false);
     setSnake(snakeStartingPosition);
     setDirection(Direction.right);
     setFood(randomFood());
+    setGameInterval(initialInterval);
   }, [randomFood]);
 
   // Check for collision
@@ -139,11 +155,12 @@ export default function Snake() {
 
     if (head.x === food.x && head.y === food.y) {
       setFood(randomFood());
+      updateGameInterval();
     } else {
       snakeCopy.pop();
     }
     setSnake(snakeCopy);
-  }, [direction, snake, food, randomFood]);
+  }, [direction, snake, food, randomFood, updateGameInterval]);
 
   // Game loop
   useEffect(() => {
@@ -151,10 +168,10 @@ export default function Snake() {
       const interval = setInterval(() => {
         move();
         checkCollision();
-      }, 200);
+      }, gameInterval);
       return () => clearInterval(interval);
     }
-  }, [isRunning, snake, move, checkCollision]);
+  }, [isRunning, snake, move, checkCollision, gameInterval]);
 
   function deriveTileState(coordinate: Coordinate) {
     // Check if tile is part of snake
@@ -190,6 +207,7 @@ export default function Snake() {
         <input
           id="name"
           value={player}
+          max={100}
           onChange={(event) => setPlayer(event.currentTarget.value)}
           onKeyDown={(event) => {
             if (event.key === 'Enter') {
@@ -203,16 +221,16 @@ export default function Snake() {
         </span>
       </div>
 
-      <div className={styles.playgorund}>
+      <div className={styles.playground}>
         {playground.map((row, rowIdx) => {
           return (
-            <div className={styles.row} key={`row-${row[rowIdx]}`}>
+            <div className={styles.row} key={`row-${row[0]}`}>
               {row.map((col, colIdx) => {
                 const state = deriveTileState({ x: colIdx, y: rowIdx });
                 return (
                   <div
                     className={`${styles.tile} ${state === tileState.snake && styles.snake} ${state === tileState.food && styles.food}`}
-                    key={`tile-${col[colIdx]}`}
+                    key={`tile-${col}`}
                   />
                 );
               })}

@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  align-items: flex-end;
+}
+
+.container > * {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.container > * > * {
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+}
+
+.first {
+  flex: 1.5;
+  background-color: var(--color-arcade-yellow);
+  border: 2px solid var(--color-arcade-yellow-shade);
+  height: 12rem;
+}
+
+.second {
+  flex: 1;
+  background-color: var(--color-arcade-blue);
+  border: 2px solid var(--color-arcade-blue-shade);
+  height: 8rem;
+}
+
+.third {
+  flex: 1;
+  background-color: var(--color-arcade-pink);
+  border: 2px solid var(--color-arcade-pink-shade);
+  height: 6rem;
+}
+
+.position {
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 2px solid black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

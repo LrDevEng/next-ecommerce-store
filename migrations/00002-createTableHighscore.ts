@@ -11,7 +11,7 @@ export async function up(sql: Sql) {
     CREATE TABLE highscores (
       id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
       name varchar(100) NOT NULL,
-      score integer NOT NULL,
+      score integer NOT NULL
     )
   `;
 }

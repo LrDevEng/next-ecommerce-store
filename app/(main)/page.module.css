@@ -89,3 +89,11 @@
   height: 300px;
   border: 2px solid var(--color-arcade-blue-intense);
 }
+
+.snakeHighscore {
+  margin-top: 2rem;
+}
+
+.snakeHighscore > h2 {
+  margin-bottom: 1rem;
+}

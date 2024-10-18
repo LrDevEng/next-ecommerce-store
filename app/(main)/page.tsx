@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { productType } from '../util/constants';
 import BlogArticle from './blog/BlogArticle';
+import Podium from './components/Podium';
 import ShopNowCard from './components/ShopNowCard';
 import Snake from './components/Snake';
 import styles from './page.module.css';
@@ -54,6 +55,10 @@ export default function HomePage() {
       <div className={styles.snake}>
         <h2>Play A Game Of Snake</h2>
         <Snake />
+      </div>
+      <div className={styles.snakeHighscore}>
+        <h2>Custom ARCADE Snake Highscore Leaderboard</h2>
+        <Podium />
       </div>
     </div>
   );
