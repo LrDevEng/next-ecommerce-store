@@ -57,7 +57,7 @@ export default function HomePage() {
         <Snake />
       </div>
       <div className={styles.snakeHighscore}>
-        <h2>Custom ARCADE Snake Highscore Leaderboard</h2>
+        <p>Custom ARCADE Snake Highscore Leaderboard</p>
         <Podium />
       </div>
     </div>
