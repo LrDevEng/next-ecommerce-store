@@ -11,6 +11,21 @@
   border: 1rem solid var(--color-arcade-yellow-shade);
 }
 
+.idle {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.gameOver {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.gameOverWithHighscore {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .row {
   flex: 1;
   display: flex;

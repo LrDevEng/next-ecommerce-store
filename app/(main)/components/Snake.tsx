@@ -11,6 +11,13 @@ enum Direction {
   right,
 }
 
+enum GameState {
+  idle,
+  gameOver,
+  gameOverWithHighscore,
+  running,
+}
+
 type Coordinate = {
   x: number;
   y: number;
@@ -30,9 +37,9 @@ export default function Snake() {
   const [snake, setSnake] = useState<Coordinate[]>(snakeStartingPosition);
   const [direction, setDirection] = useState<Direction>(Direction.right);
   const [food, setFood] = useState<Coordinate>({ x: 5, y: 5 });
-  const [isRunning, setIsRunning] = useState(false);
   const [player, setPlayer] = useState('');
   const [gameInterval, setGameInterval] = useState(initialInterval);
+  const [gameState, setGameState] = useState<GameState>(GameState.idle);
 
   // const playground = Array(gridSize)
   //   .fill('')
@@ -67,8 +74,8 @@ export default function Snake() {
   // Start game
   function startGame() {
     if (player.length > 0) {
-      if (!isRunning) {
-        setIsRunning(true);
+      if (gameState != GameState.running) {
+        setGameState(GameState.running);
       }
     } else {
       alert('Please enter your name to start playing.');
@@ -103,8 +110,26 @@ export default function Snake() {
   }, [gameInterval]);
 
   // Reset game
-  const resetGame = useCallback(() => {
-    setIsRunning(false);
+  const resetGame = useCallback(async () => {
+    setGameState(GameState.gameOver);
+    const response = await fetch('/api/snake-highscore', {
+      method: 'PUT',
+      body: JSON.stringify({
+        name: player,
+        score: snake.length,
+      }),
+      headers: {
+        'Content-Type': 'applicaton/json',
+      },
+    });
+
+    if (response.ok) {
+      const responseBody = await response.json();
+      if (responseBody.success) {
+        setGameState(GameState.gameOverWithHighscore);
+      }
+    }
+
     setSnake(snakeStartingPosition);
     setDirection(Direction.right);
     setFood(randomFood());
@@ -164,14 +189,14 @@ export default function Snake() {
 
   // Game loop
   useEffect(() => {
-    if (isRunning) {
+    if (gameState === GameState.running) {
       const interval = setInterval(() => {
         move();
         checkCollision();
       }, gameInterval);
       return () => clearInterval(interval);
     }
-  }, [isRunning, snake, move, checkCollision, gameInterval]);
+  }, [gameState, snake, move, checkCollision, gameInterval]);
 
   function deriveTileState(coordinate: Coordinate) {
     // Check if tile is part of snake
@@ -206,6 +231,7 @@ export default function Snake() {
         <label htmlFor="name">GAMER Name:</label>
         <input
           id="name"
+          disabled={gameState === GameState.running}
           value={player}
           max={100}
           onChange={(event) => setPlayer(event.currentTarget.value)}
@@ -222,21 +248,45 @@ export default function Snake() {
       </div>
 
       <div className={styles.playground}>
-        {playground.map((row, rowIdx) => {
-          return (
-            <div className={styles.row} key={`row-${row[0]}`}>
-              {row.map((col, colIdx) => {
-                const state = deriveTileState({ x: colIdx, y: rowIdx });
-                return (
-                  <div
-                    className={`${styles.tile} ${state === tileState.snake && styles.snake} ${state === tileState.food && styles.food}`}
-                    key={`tile-${col}`}
-                  />
-                );
-              })}
-            </div>
-          );
-        })}
+        {gameState === GameState.running &&
+          playground.map((row, rowIdx) => {
+            return (
+              <div className={styles.row} key={`row-${row[0]}`}>
+                {row.map((col, colIdx) => {
+                  const state = deriveTileState({ x: colIdx, y: rowIdx });
+                  return (
+                    <div
+                      className={`${styles.tile} ${state === tileState.snake && styles.snake} ${state === tileState.food && styles.food}`}
+                      key={`tile-${col}`}
+                    />
+                  );
+                })}
+              </div>
+            );
+          })}
+        {gameState === GameState.idle && (
+          <div className={styles.idle}>
+            <div>Enter Your Gamer Name</div>
+            <div>&</div>
+            <div>Hit 'Enter' To Start The Game</div>
+          </div>
+        )}
+        {gameState === GameState.gameOver && (
+          <div className={styles.gameOver}>
+            <div>Game Over</div>
+            <div>-</div>
+            <div>Hit 'Enter' To Start The Game</div>
+          </div>
+        )}
+        {gameState === GameState.gameOverWithHighscore && (
+          <div className={styles.gameOverWithHighscore}>
+            <div>Game Over</div>
+            <div>-</div>
+            <div>Congratulations! You Entered The Leaderboard.</div>
+            <div>-</div>
+            <div>Hit 'Enter' To Start The Game</div>
+          </div>
+        )}
       </div>
     </div>
   );

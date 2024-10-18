@@ -14,19 +14,19 @@ export const getHighscoresInsecure = cache(async () => {
     FROM
       highscores
   `;
+  highscores.sort((highscoreA, highscoreB) => highscoreA.id - highscoreB.id);
   return highscores;
 });
 
 export const updateHighscoreInsecure = cache(
   async (newHighscore: Highscore) => {
     const [highscore] = await sql<Highscore[]>`
-      INSERT INTO
-        highscores (name, score)
-      VALUES
-        (
-          ${newHighscore.name},
-          ${newHighscore.score}
-        )
+      UPDATE highscores
+      SET
+        name = ${newHighscore.name},
+        score = ${newHighscore.score}
+      WHERE
+        id = ${newHighscore.id}
       RETURNING
         highscores.*
     `;
