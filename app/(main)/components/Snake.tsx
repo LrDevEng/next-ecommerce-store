@@ -1,6 +1,8 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
+import type { Highscore } from '../../../database/highscores';
 import { useKeyPress } from '../../hooks/useKeyPress';
 import styles from './Snake.module.css';
 
@@ -23,6 +25,12 @@ type Coordinate = {
   y: number;
 };
 
+type ResponseOkBody = {
+  success: boolean;
+  message: string;
+  highscore: Omit<Highscore, 'id'> | Highscore;
+};
+
 const tileState = {
   blank: 'blank',
   food: 'food',
@@ -34,6 +42,7 @@ const initialInterval = 250;
 
 export default function Snake() {
   const gridSize = 20;
+  const router = useRouter();
   const [snake, setSnake] = useState<Coordinate[]>(snakeStartingPosition);
   const [direction, setDirection] = useState<Direction>(Direction.right);
   const [food, setFood] = useState<Coordinate>({ x: 5, y: 5 });
@@ -74,7 +83,7 @@ export default function Snake() {
   // Start game
   function startGame() {
     if (player.length > 0) {
-      if (gameState != GameState.running) {
+      if (gameState !== GameState.running) {
         setGameState(GameState.running);
       }
     } else {
@@ -124,17 +133,17 @@ export default function Snake() {
     });
 
     if (response.ok) {
-      const responseBody = await response.json();
+      const responseBody = (await response.json()) as ResponseOkBody;
       if (responseBody.success) {
         setGameState(GameState.gameOverWithHighscore);
+        router.refresh();
       }
     }
-
     setSnake(snakeStartingPosition);
     setDirection(Direction.right);
     setFood(randomFood());
     setGameInterval(initialInterval);
-  }, [randomFood]);
+  }, [randomFood, router, player, snake]);
 
   // Check for collision
   const checkCollision = useCallback(() => {
@@ -142,14 +151,14 @@ export default function Snake() {
 
     // Check if snake hit playground boundaries
     if (head.x < 0 || head.x >= gridSize || head.y < 0 || head.y >= gridSize) {
-      resetGame();
+      resetGame().catch((error) => console.log(error));
     }
 
     // Check if snake hit itself
     const snakeCopy = [...snake];
     snakeCopy.shift();
     if (snakeCopy.some((value) => value.x === head.x && value.y === head.y)) {
-      resetGame();
+      resetGame().catch((error) => console.log(error));
     }
   }, [snake, resetGame]);
 

@@ -36,11 +36,18 @@ export async function PUT(
   }
 
   const highscores = await getHighscoresInsecure();
-  const highscoreToUpdate = highscores.find(
-    (highscore) => result.data.score > highscore.score,
-  );
+  highscores.push({
+    id: 4,
+    name: result.data.name,
+    score: result.data.score,
+  });
 
-  if (!highscoreToUpdate) {
+  highscores.sort(
+    (highscoreA, highscoreB) => highscoreB.score - highscoreA.score,
+  );
+  const lowest = highscores.pop();
+
+  if (lowest?.id === 4) {
     return NextResponse.json({
       success: false,
       message: 'No new highscore.',
@@ -48,11 +55,22 @@ export async function PUT(
     });
   }
 
-  const updatedHighscore = await updateHighscoreInsecure({
-    id: highscoreToUpdate.id,
-    name: result.data.name,
-    score: result.data.score,
-  });
+  let updatedHighscore: Highscore | undefined = undefined;
+  for (let i = 0; i < 3; i++) {
+    if (highscores[i]?.id === 4) {
+      updatedHighscore = await updateHighscoreInsecure({
+        id: i + 1,
+        name: result.data.name,
+        score: result.data.score,
+      });
+    } else {
+      await updateHighscoreInsecure({
+        id: i + 1,
+        name: highscores[i]!.name,
+        score: highscores[i]!.score,
+      });
+    }
+  }
 
   if (!updatedHighscore) {
     return NextResponse.json(
