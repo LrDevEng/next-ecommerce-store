@@ -18,6 +18,7 @@ enum GameState {
   gameOver,
   gameOverWithHighscore,
   running,
+  checkingHighScore,
 }
 
 type Coordinate = {
@@ -97,13 +98,14 @@ export default function Snake() {
     const y = Math.floor(Math.random() * (gridSize - 1));
 
     const isOnSnake = snake.some((value) => value.x === x && value.y === y);
+    const isOnSameTile = x === food.x && y === food.y;
 
-    if (isOnSnake) {
+    if (isOnSnake || isOnSameTile) {
       return randomFood();
     } else {
       return { x: x, y: y };
     }
-  }, [snake]);
+  }, [snake, food]);
 
   // Reduce game interval every time snake eats food
   const updateGameInterval = useCallback(() => {
@@ -120,7 +122,7 @@ export default function Snake() {
 
   // Reset game
   const resetGame = useCallback(async () => {
-    setGameState(GameState.gameOver);
+    setGameState(GameState.checkingHighScore);
     const response = await fetch('/api/snake-highscore', {
       method: 'PUT',
       body: JSON.stringify({
@@ -137,13 +139,24 @@ export default function Snake() {
       if (responseBody.success) {
         setGameState(GameState.gameOverWithHighscore);
         router.refresh();
+      } else {
+        setGameState(GameState.gameOver);
       }
+    } else {
+      setGameState(GameState.gameOver);
     }
+
     setSnake(snakeStartingPosition);
     setDirection(Direction.right);
     setFood(randomFood());
     setGameInterval(initialInterval);
   }, [randomFood, router, player, snake]);
+
+  // Game over effect
+  useEffect(() => {
+    if (gameState === GameState.gameOver) {
+    }
+  }, [gameState]);
 
   // Check for collision
   const checkCollision = useCallback(() => {
@@ -284,6 +297,8 @@ export default function Snake() {
           <div className={styles.gameOver}>
             <div>Game Over</div>
             <div>-</div>
+            <div>No Highscore, Try Again</div>
+            <div>-</div>
             <div>Hit 'Enter' To Start The Game</div>
           </div>
         )}
@@ -291,9 +306,14 @@ export default function Snake() {
           <div className={styles.gameOverWithHighscore}>
             <div>Game Over</div>
             <div>-</div>
-            <div>Congratulations! You Entered The Leaderboard.</div>
+            <div>Congratulations! You Entered The Highscore Leaderboard.</div>
             <div>-</div>
             <div>Hit 'Enter' To Start The Game</div>
+          </div>
+        )}
+        {gameState === GameState.checkingHighScore && (
+          <div className={styles.checkingHighscore}>
+            <div>Checking For Highscore ...</div>
           </div>
         )}
       </div>

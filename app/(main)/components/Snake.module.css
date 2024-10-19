@@ -26,6 +26,11 @@
   margin-bottom: auto;
 }
 
+.checkingHighscore {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .row {
   flex: 1;
   display: flex;
