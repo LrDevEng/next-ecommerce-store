@@ -11,21 +11,36 @@ This is not a real e-commerce store. You can not buy the products presented on t
 Welcome to Custom ARCADE, your trusted platform for building custom arcade machines. The platform offers an interactive landing page, an about page with information about the project, a blog page with articles about building arcade machines and a shop page offering various products related to microelectronics. The product overview can be filtered by type and
 more information about each product is available at its specific product page. Each product can be added to the cart. The user can navigate to the cart via the cart preview or the cart icon in the navigation bar. On the cart page it is possible to modify the selected products or the user can continue to the checkout page.
 
+You can visit the delpoyed project at: https://custom-arcade.fly.dev/
+
 #### Landing page with links to shop
+![image](https://github.com/user-attachments/assets/411a7010-fd2f-4680-be2a-d20eacfdb136)
 
 #### Landing page snake game
 
 As a special feature the user can play a game of classic snake and try to beat the Custom ARCADE highscore.
+![image](https://github.com/user-attachments/assets/1d731d08-015e-4402-b115-7ec796a0e898)
 
 #### Blog page
+![image](https://github.com/user-attachments/assets/76171ddb-8a2c-47ed-90c8-4c5711f09117)
 
 #### Shop page without filters
+![image](https://github.com/user-attachments/assets/daa9cf5a-9f17-43c6-8249-cd4dd9493811)
 
 #### Shop page with filter
+![image](https://github.com/user-attachments/assets/a3171dcd-649f-42c2-9082-d26389202fec)
 
-#### Shop page with products in cart
+#### Specific product page
+![image](https://github.com/user-attachments/assets/641b7014-61d6-401d-8f69-0b177dbd9e4e)
+
+#### Cart preview and cart page
+![image](https://github.com/user-attachments/assets/82bb8f1a-1a7d-4954-a120-3b3fbe55fe51)
+
+![image](https://github.com/user-attachments/assets/5d9e3047-f11f-4b5d-951f-d8a4d5c2fd5d)
 
 #### Checkout page
+![image](https://github.com/user-attachments/assets/0ce80472-24a0-4b10-b36c-3736d513cb77)
+
 
 ## Technologies
 
