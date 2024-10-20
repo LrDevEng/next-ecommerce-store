@@ -2,6 +2,31 @@
 
 This project demonstrates how to set up an e-commerce store with Next.js.
 
+### Disclaimer
+
+This is not a real e-commerce store. You can not buy the products presented on the deployed page. The page does not save or process any personal data.
+
+### Project Theme
+
+Welcome to Custom ARCADE, your trusted platform for building custom arcade machines. The platform offers an interactive landing page, an about page with information about the project, a blog page with articles about building arcade machines and a shop page offering various products related to microelectronics. The product overview can be filtered by type and
+more information about each product is available at its specific product page. Each product can be added to the cart. The user can navigate to the cart via the cart preview or the cart icon in the navigation bar. On the cart page it is possible to modify the selected products or the user can continue to the checkout page.
+
+#### Landing page with links to shop
+
+#### Landing page snake game
+
+As a special feature the user can play a game of classic snake and try to beat the Custom ARCADE highscore.
+
+#### Blog page
+
+#### Shop page without filters
+
+#### Shop page with filter
+
+#### Shop page with products in cart
+
+#### Checkout page
+
 ## Technologies
 
 - Next.js
@@ -29,7 +54,21 @@ Setup the database as mentioned below. To start the database run:
 postgres
 ```
 
-###
+### Populate database
+
+The database is populated with migrations (using the ley library, which is a dependency of this project). Run the following command to populate the database:
+
+```bash
+pnpm migrate up
+```
+
+### Run local development server
+
+You can start a local development version of the project on 'localhost:3000' by running the following command:
+
+```bash
+pnpm dev
+```
 
 ## Database Setup
 
@@ -119,5 +158,7 @@ pnpm playwright test
 
 ## Deployment
 
-- Fly.io
+The project is deployed on fly.io using docker containers.
+
+- fly.io
 - Docker
